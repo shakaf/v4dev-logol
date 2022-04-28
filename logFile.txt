@@ -1,0 +1,30 @@
+* About to connect() to 34.87.19.200 port 4000 (#756)
+*   Trying 34.87.19.200...
+* Connected to 34.87.19.200 (34.87.19.200) port 4000 (#756)
+> GET /api/v4/profile/rating/checking HTTP/1.1
+Host: 34.87.19.200:4000
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImlhdCI6MTY1MDk4NDM1NCwiZXhwIjoxNjUwOTg3OTU0LCJpc3MiOiJmaXJlYmFzZS1hZG1pbnNkay04dHB3OUBsb2dpc3RpYy1vbmxpbmUtdjQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay04dHB3OUBsb2dpc3RpYy1vbmxpbmUtdjQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJ1aWQiOiJFRTE5MEZBRjk1NDQxMUVDOURBNzQyMDEwQTk0MDAwMiIsImNsYWltcyI6eyJjb21wYW55X2luZm8iOnsiY29tcGFueV9pZCI6Ijc5ODRFNjE3OTU0MjExRUM5REE3NDIwMTBBOTQwMDAyIiwiY29tcGFueV9uYW1lIjoiUFQgdHJ1Y2tlciAxIiwibWVtYmVyX3R5cGVfaWQiOiIwRkU5ODgyMDk1M0ExMUVDOURBNzQyMDEwQTk0MDAwMiIsInByb2R1Y3RfbWFwcGluZ19pZCI6W3siUFJPRFVDVF9UWVBFX0lEIjoiUFJPMDAwMSIsIlBST0RVQ1RfVFlQRV9OQU1FIjoiRFBMIChEaWdpdGFsIFBsYXRmb3JtKSJ9XSwiY29tcGFueV90eXBlX2lkIjoyNSwiY29tcGFueV90eXBlX25hbWUiOiJ0cnVja2VyRkYiLCJzdGF0dXNfaWRfY29tcGFueSI6MiwiaGF2ZV9yZWZlcl90cnVja2VyIjowLCJvZmZpY2VfcGhvbmUiOiIwMjEyMTIwMDAwMDEiLCJxdHlfdXNlcl9yZXF1ZXN0Ijo1LCJkYXRhX2lzX2NvbXBsZXRlIjowfSwidXNlcl9pbmZvIjp7InVzZXJfaWQiOiJFRTE5MEZBRjk1NDQxMUVDOURBNzQyMDEwQTk0MDAwMiIsInBpY19uYW1lIjoiUmV6YSIsInBpY19wcm9maWxlX3BpY3R1cmUiOiJodHRwOi8vMzQuODcuMTkuMjAwOjg5L2NvbXBhbnkvdXNlci9sb2dvbEJhcnUuMWJiZmMyM2QucG5nIiwicm9sZV9pZCI6IlJPTDAwMjMiLCJzdGF0dXNfaWQiOjYsImlzX21haW5fdXNlciI6MSwiaXNfbG9naW4iOjF9LCJsb2dpbl90aW1lIjoxNjUwOTg0MzU0LCJ1aWQiOiJFRTE5MEZBRjk1NDQxMUVDOURBNzQyMDEwQTk0MDAwMiIsImVtYWlsIjoicmV6YS5hem1hd2FuQGxvZ29sLmNvLmlkIiwicm9sZV9pZCI6IlJPTDAwMjMiLCJzdGF0dXNfaWQiOjYsImlzX25sZSI6MCwicGljX25hbWUiOiJSZXphIiwicGljX3Byb2ZpbGVfcGljdHVyZSI6Imh0dHA6Ly8zNC44Ny4xOS4yMDA6ODkvY29tcGFueS91c2VyL2xvZ29sQmFydS4xYmJmYzIzZC5wbmciLCJwaWNfbW9iaWxlX3Bob25lIjpudWxsLCJjb21wYW55X2lkIjoiNzk4NEU2MTc5NTQyMTFFQzlEQTc0MjAxMEE5NDAwMDIiLCJjb21wYW55X25hbWUiOiJQVCB0cnVja2VyIDEiLCJjb21wYW55X25wd3AiOiIwOTg3NjU0MzIxMzQ1NiIsInVzZXJfc3RhdHVzIjoiVkVSSUZJRUQgVVNFUiJ9fQ.vXMEDS1RVw1TRFF98Fu7BezWemuqssCSVxdfj9uTGHJUaqSTlRcIf9TGrb2KZZAuYCXZhwhd2XMutvZ8D2sIMpRinU9F5oRdOLMk0qDDT-vR0Jr_MtPCF1oK3O3YIadfzCV4G2zSV4797J8V8vhn4QY3O9E6Fe5xeMtviyUJYNjdjJ1L8P_WId7IkZYeUaejCIAkrnJXc1aUTMr-w_wHrfAkSbMGqdoJci73K3HY5-AOn-yRBTVGlLPKWcrJ-JFoWvZ406vMjO1BnXgR9k1Ci9ebLJZ7MSh45tN03AGJ4bq_lFKCQr25j8eQYyYaXExZG2BvNfWvGHmvp03l9NU4nA
+
+< HTTP/1.1 200 OK
+< Access-Control-Allow-Origin: https://
+< Access-Control-Allow-Credentials: true
+< Access-Control-Allow-Headers: Access-Control-Allow-Origin, x-access-token, X-Requested-With, Content-Type, Accept, Authorization, Proxy-Authorization, X-session, Pragma, Cache-control, Expires
+< Access-Control-Expose-Headers: Content-Disposition
+< Access-Control-Allow-Methods: GET, PUT, DELETE, POST
+< X-XSS-Protection: 1; mode=block
+< X-Content-Type-Options: nosniff
+< Content-Security-Policy: object-src 'none';img-src 'self';media-src 'self';frame-src 'none';font-src 'self' data:;connect-src 'self';style-src 'self'
+< Content-Type: application/json; charset=utf-8
+< X-DNS-Prefetch-Control: off
+< X-Frame-Options: SAMEORIGIN
+< Strict-Transport-Security: max-age=15552000; includeSubDomains
+< X-Download-Options: noopen
+< Content-Length: 59
+< ETag: W/"3b-iP5P0lC1wmk1AhsW8s1KgxBc5ho"
+< Date: Tue, 26 Apr 2022 14:48:25 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+* Connection #756 to host 34.87.19.200 left intact
