@@ -1154,6 +1154,24 @@ ul.select_ul {
   width: 219px;
   line-height:0px;
 }
+
+.btn-modal-dialog {
+  margin: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center; 
+  padding: 18px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  margin-right: 4px;
+  border-radius: 8px;
+  height: 40px;
+  width: 219px;
+  line-height:0px;
+}
 .btn-dialog-cancel {
   background-color: #FFF;
   color: #8C8CA1;
@@ -1165,6 +1183,10 @@ ul.select_ul {
 .btn-dialog-submit {
   background-color: #E7EEFE;
   color: #002985;
+}
+.btn-dialog-submit:hover {
+  background-color: #002985;
+  color: #E7EEFE;
 }
 .btn-landing-next {
   width: 224px;
@@ -2119,4 +2141,49 @@ ul.v4-pagination {
 }
 .v4-no-data-wrapper-button button {
   width: calc(100% - 192px);
+}
+
+input[name="upload"]:active,
+	input[name="upload"]:focus {
+		border-color: #86A8F8;
+	}
+p.description {
+  font-size: 11px;
+  font-family: Inter; 
+  font-style: normal; 
+  font-weight: 500; 
+  letter-spacing: 0.02em; 
+  color: #8C8CA2;
+}
+
+.modal-delete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 32px 32px;
+  gap: 24px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 8px 16px rgba(138, 138, 138, 0.05);
+  border-radius: 16px;
+}
+
+.cancelModal {
+  color: #FEE8E7;
+  background: #E84343;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 8px;
+}
+
+.keepOrder {
+  color: #002985;
+  background: #FFFFFF;
+  border-color: #002985;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 8px;
 }

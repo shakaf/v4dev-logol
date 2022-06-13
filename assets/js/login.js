@@ -29,6 +29,7 @@ var v4DoLogin = function(wrapper, child) {
         }
     });
     
+    $verifyPointer = 0;//bypass recaptcha validation
     if ($verifyPointer > 0) {
         return false;
     } else {

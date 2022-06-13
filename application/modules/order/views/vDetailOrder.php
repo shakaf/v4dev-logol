@@ -1,62 +1,65 @@
 <style>
-.card-title{
-	font-size: 14px;
-}
-.card-subtitle{
-	color: #8C8CA1 !important;
-	font-weight: 500;
-	font-size: 10px;
-	line-height: 160%;
-}
+	.card-title {
+		font-size: 14px;
+	}
 
-.label{
-	font-weight: 600;
-	font-size: 10px;
-	color: #4A4A68;
-}
+	.card-subtitle {
+		color: #8C8CA1 !important;
+		font-weight: 500;
+		font-size: 10px;
+		line-height: 160%;
+	}
 
-.l_val {
-	font-style: normal;
-	font-weight: 500;
-	font-size: 12px;
-	color: #0E0E2C;
-}
-.card-gp {
-	border: #ECF1F4 solid 1px;
-	border-radius: 8px;
-}
+	.label {
+		font-weight: 600;
+		font-size: 10px;
+		color: #4A4A68;
+	}
 
-.card-gp-title {
-	color: #002985;
-	font-weight: 500;
-	font-size: 14px;
-}
-.payment-title {
-	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	color: #2B313B;
-}
+	.l_val {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 12px;
+		color: #0E0E2C;
+	}
 
-.payment-total {
-	font-style: normal;
-	font-weight: 700;
-	font-size: 14px;
-	color: #2B313B;
-}
+	.card-gp {
+		border: #ECF1F4 solid 1px;
+		border-radius: 8px;
+	}
 
-.payment-total-amount {
-	font-style: normal;
-	font-weight: 700;
-	font-size: 14px;
-	color: #044795;
-}
+	.card-gp-title {
+		color: #002985;
+		font-weight: 500;
+		font-size: 14px;
+	}
 
-.payment-grey {
-	font-weight: 400;
-	font-size: 12px;
-	color: #576175;
-}
+	.payment-title {
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 16px;
+		color: #2B313B;
+	}
+
+	.payment-total {
+		font-style: normal;
+		font-weight: 700;
+		font-size: 14px;
+		color: #2B313B;
+	}
+
+	.payment-total-amount {
+		font-style: normal;
+		font-weight: 700;
+		font-size: 14px;
+		color: #044795;
+	}
+
+	.payment-grey {
+		font-weight: 400;
+		font-size: 12px;
+		color: #576175;
+	}
 </style>
 
 <div class="page-content" style="background-color: #F8F8F9; ">
@@ -69,12 +72,12 @@
 
 			</div>
 			<div class="col-md-8">
-			<div class="card">
+				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title">General Info</h4>
 						<h6 class="card-subtitle">Support card subtitle</h6>
 					</div>
-					<hr/>
+					<hr />
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-4">
@@ -106,7 +109,7 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-9">
-							Your order will be canceled automatically, if you do not complete the payment by the specified time limit!
+								Your order will be canceled automatically, if you do not complete the payment by the specified time limit!
 							</div>
 							<div class="col-md-3">
 
@@ -120,7 +123,7 @@
 						<h6 class="card-subtitle">Specific data that required by each services will shown here.</h6>
 						<style>
 							.a-btn {
-								padding-left : 40px;
+								padding-left: 40px;
 								padding-right: 40px;
 
 								padding-top: 10px;
@@ -128,21 +131,23 @@
 
 								border-radius: 21px;
 							}
-							.a-not{
+
+							.a-not {
 								background: #F8F8F9;
 								color: #002985;
 							}
+
 							.a-active {
 								background: #002985;
 								color: white;
 							}
 						</style>
 						<div style="margin-top:25px;">
-							<a href="#" class="a-btn a-not" >E-Depot</a>
-							<a href="#" class="a-btn a-active" >E-Port</a>
+							<a href="#" class="a-btn a-not">E-Depot</a>
+							<a href="#" class="a-btn a-active">E-Port</a>
 						</div>
 					</div>
-					<hr/>
+					<hr />
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-4">
@@ -187,29 +192,30 @@
 								<div class="card">
 									<div class="card-body">
 										<h4 class="card-title card-gp-title">
-										<span>
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_1338_38064)">
-<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape"/>
-</filter>
-</defs>
-</svg>
-</span>20’ GP - EGHU3826956</h4>
+											<span>
+												<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<g filter="url(#filter0_d_1338_38064)">
+														<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+													</g>
+													<defs>
+														<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+															<feFlood flood-opacity="0" result="BackgroundImageFix" />
+															<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+															<feOffset dy="4" />
+															<feGaussianBlur stdDeviation="2" />
+															<feComposite in2="hardAlpha" operator="out" />
+															<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+															<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064" />
+															<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape" />
+														</filter>
+													</defs>
+												</svg>
+											</span>20’ GP - EGHU3826956
+										</h4>
 										<div class="row">
 											<div class="col-md-6">
 												<label class="label">Yard Opening Time</label>
@@ -228,28 +234,28 @@
 									<div class="card-body">
 										<h4 class="card-title card-gp-title">
 											<span>
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_1338_38064)">
-<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape"/>
-</filter>
-</defs>
-</svg>
-</span>20’ GP - EGHU3826956
+												<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<g filter="url(#filter0_d_1338_38064)">
+														<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+													</g>
+													<defs>
+														<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+															<feFlood flood-opacity="0" result="BackgroundImageFix" />
+															<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+															<feOffset dy="4" />
+															<feGaussianBlur stdDeviation="2" />
+															<feComposite in2="hardAlpha" operator="out" />
+															<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+															<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064" />
+															<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape" />
+														</filter>
+													</defs>
+												</svg>
+											</span>20’ GP - EGHU3826956
 										</h4>
 										<div class="row">
 											<div class="col-md-6">
@@ -270,29 +276,30 @@
 								<div class="card">
 									<div class="card-body">
 										<h4 class="card-title card-gp-title">
-										<span>
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_1338_38064)">
-<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape"/>
-</filter>
-</defs>
-</svg>
-</span>20’ GP - EGHU3826956</h4>
+											<span>
+												<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<g filter="url(#filter0_d_1338_38064)">
+														<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+													</g>
+													<defs>
+														<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+															<feFlood flood-opacity="0" result="BackgroundImageFix" />
+															<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+															<feOffset dy="4" />
+															<feGaussianBlur stdDeviation="2" />
+															<feComposite in2="hardAlpha" operator="out" />
+															<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+															<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064" />
+															<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape" />
+														</filter>
+													</defs>
+												</svg>
+											</span>20’ GP - EGHU3826956
+										</h4>
 										<div class="row">
 											<div class="col-md-6">
 												<label class="label">Yard Opening Time</label>
@@ -311,28 +318,28 @@
 									<div class="card-body">
 										<h4 class="card-title card-gp-title">
 											<span>
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_1338_38064)">
-<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape"/>
-</filter>
-</defs>
-</svg>
-</span>20’ GP - EGHU3826956
+												<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<g filter="url(#filter0_d_1338_38064)">
+														<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+														<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+													</g>
+													<defs>
+														<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+															<feFlood flood-opacity="0" result="BackgroundImageFix" />
+															<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+															<feOffset dy="4" />
+															<feGaussianBlur stdDeviation="2" />
+															<feComposite in2="hardAlpha" operator="out" />
+															<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+															<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064" />
+															<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape" />
+														</filter>
+													</defs>
+												</svg>
+											</span>20’ GP - EGHU3826956
 										</h4>
 										<div class="row">
 											<div class="col-md-6">
@@ -357,7 +364,7 @@
 						<h4 class="card-title">Activity Log</h4>
 						<h6 class="card-subtitle">Keep track and see your order progress</h6>
 					</div>
-					<hr/>
+					<hr />
 					<div class="card-body">
 
 					</div>
@@ -367,7 +374,7 @@
 						<h4 class="card-title">Payment Details</h4>
 						<h6 class="card-subtitle">This is your payment summary from your order.</h6>
 					</div>
-					<hr/>
+					<hr />
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-8">
@@ -405,7 +412,7 @@
 								<label class="payment-title">Rp 300.000</label>
 							</div>
 						</div>
-						<hr/>
+						<hr />
 						<div class="row">
 							<div class="col-md-8">
 								<p class="payment-title">PPh 23</p>
@@ -440,11 +447,11 @@
 						<h4 class="card-title">Document Detail</h4>
 						<h6 class="card-subtitle">All Documents generated by each service will be shown here.</h6>
 						<div style="margin-top:25px;">
-							<a href="#" class="a-btn a-not" >E-Depot</a>
-							<a href="#" class="a-btn a-active" >E-Port</a>
+							<a href="#" class="a-btn a-not">E-Depot</a>
+							<a href="#" class="a-btn a-active">E-Port</a>
 						</div>
 					</div>
-					<hr/>
+					<hr />
 					<div class="card-body">
 						<input class="form-control" type="search" value="Search" id="example-search-input">
 						<div class="row" style="margin-top:40px;">
@@ -458,24 +465,24 @@
 							<div class="col-md-12 col-sm-12">
 								<input type="checkbox" class="" style="width: 20px; height: 20px;">
 								<label class="form-title" style="vertical-align:middle; text-align: center; margin-left:1em; ">Container</label>
-								<br/>
-                            	<label style="font-weight: bold;margin-left:40px;">20’ GP - EGHU3826956</label>
+								<br />
+								<label style="font-weight: bold;margin-left:40px;">20’ GP - EGHU3826956</label>
 							</div>
 						</div>
 						<div class="row" style="margin-top:40px;">
 							<div class="col-md-12 col-sm-12">
 								<input type="checkbox" class="" style="width: 20px; height: 20px;">
 								<label class="form-title" style="vertical-align:middle; text-align: center; margin-left:1em; ">Container</label>
-								<br/>
-                            	<label style="font-weight: bold;margin-left:40px;">20’ GP - EGHU3826956</label>
+								<br />
+								<label style="font-weight: bold;margin-left:40px;">20’ GP - EGHU3826956</label>
 							</div>
 						</div>
 						<div class="row" style="margin-top:40px;">
 							<div class="col-md-12 col-sm-12">
 								<input type="checkbox" class="" style="width: 20px; height: 20px;">
 								<label class="form-title" style="vertical-align:middle; text-align: center; margin-left:1em; ">Container</label>
-								<br/>
-                            	<label style="font-weight: bold;margin-left:40px;">20’ GP - EGHU3826956</label>
+								<br />
+								<label style="font-weight: bold;margin-left:40px;">20’ GP - EGHU3826956</label>
 							</div>
 						</div>
 					</div>

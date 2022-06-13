@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -49,14 +49,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] 					        = 'login';
-$route['login-attempt']['POST'] 				        = 'login/setCallBackDoLogin';
-$route['logout']['GET'] 	        			        = 'login/doLogout';
-$route['set-register']['POST'] 					        = 'register/setRegister';
-$route['forgot-password']['POST'] 				        = 'forgot/doForgotPassword';
-$route['forgot-new-password']['GET'] 			        = 'forgot/newPassword';
-$route['forgot-new-password/(:any)']['GET']		        = 'forgot/newPassword/$1';
-$route['set-new-password/(:any)']['POST'] 		        = 'forgot/doNewPassword/$1';
+$route['default_controller']                             = 'login';
+$route['login-attempt']['POST']                         = 'login/setCallBackDoLogin';
+$route['logout']['GET']                                 = 'login/doLogout';
+$route['set-register']['POST']                             = 'register/setRegister';
+$route['forgot-password']['POST']                         = 'forgot/doForgotPassword';
+$route['forgot-new-password']['GET']                     = 'forgot/newPassword';
+$route['forgot-new-password/(:any)']['GET']                = 'forgot/newPassword/$1';
+$route['set-new-password/(:any)']['POST']                 = 'forgot/doNewPassword/$1';
 /*
  * after login 
  */
@@ -93,24 +93,27 @@ $route['my-company-delete-digistamp']['POST']           = 'profile/setCallBackDe
 
 
 
-$route['my-order']['GET']                 		        = 'order/allOrder';
-$route['order-list/(:any)']['POST']                 	= 'order/contentOrder/$1';
-$route['order-request/(:any)']['POST']                 	= 'order/orderRequest/$1';
+$route['my-order']['GET']                                 = 'order/allOrder';
+$route['order-list/(:any)']['POST']                     = 'order/contentOrder/$1';
+$route['order-request/(:any)']['POST']                     = 'order/orderRequest/$1';
 
-$route['create-order']['GET']                 	        = 'order';
+$route['create-order']['GET']                             = 'order';
 $route['create-order-depo']['GET']                      = 'order/depoRequest';
 $route['create-order-depo/(:any)']['GET']               = 'order/depoRequest/$1';
 $route['create-order-depo-cart']['GET']                 = 'order/depoCart';
 $route['create-order-depo-cart/(:any)']['GET']          = 'order/depoCart/$1';
-$route['create-order-gatepass']['GET']   		        = 'order/gatepassRequest';
+$route['create-order-gatepass']['GET']                   = 'order/gatepassRequest';
 $route['create-order-gatepass/(:any)']['GET']           = 'order/gatepassRequest/$1';
 $route['create-order-gatepass-cart']['GET']             = 'order/gatepassCart';
 $route['create-order-gatepass-cart/(:any)']['GET']      = 'order/gatepassCart/$1';
 
-#$route['all-order']['GET']                      = 'order/allOrder';
-#$route['detail-order']['GET']                   = 'order/detailOrder';
+$route['all-order']['GET']                              = 'order/allOrder';
+$route['detail-order']['GET']                           = 'order/detailOrder';
+$route['order-issue-detil']['GET']                      = 'order/';
+$route['detil-order-wait-payment']['GET']               = 'order/detailOrderwaitpay';
+$route['detil-order-wait-payment-fin']['GET']           = 'order/detailOrderwaitpayfin';
 
-$route['set-rating']['POST']      				        = 'profile/setRating';
+$route['set-rating']['POST']                            = 'profile/setRating';
 $route['e-gatepass']['GET']                             = 'home/getEGatepass';
 $route['e-depo']['GET']                                 = 'home/getEDepo';
 $route['e-depo-admin']['GET']                           = 'home/getEDepo';
@@ -123,8 +126,8 @@ $route['payment-confirmation']['GET']                   = 'home/getPayConf';
 $route['vessel-schedule']['GET']                        = 'home/vesselSchedule';
 $route['verification-list']['GET']                      = 'verification/listData';
 $route['set-verification/(:any)']['POST']               = 'verification/doVerify/$1';
-        
-$route['nle-register']['GET']                 	        = 'nle/register';
+
+$route['nle-register']['GET']                             = 'nle/register';
 /*
 * end after login
 */

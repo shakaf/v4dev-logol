@@ -14,7 +14,9 @@ class LoginService extends MY_Service
         $csrfRefreshTokens = $this->security->get_csrf_hash();
         $Curladapter = $this->curladapter;
         $recaptcha  = $this->input->post('g-recaptcha-response');
-        $response = $this->recaptcha->verifyResponse($recaptcha);
+        //$response = $this->recaptcha->verifyResponse($recaptcha);
+        $response = array("success" => true); //bypass recaptcha validation
+        
         
         $this->form_validation->set_rules('emailAddress', 'Email', 'trim|required|valid_email|xss_clean');
         if($this->form_validation->run() == FALSE)
