@@ -111,6 +111,7 @@ $route['all-order']['GET']                              = 'order/allOrder';
 $route['detail-order']['GET']                           = 'order/detailOrder';
 $route['order-issue-detil']['GET']                      = 'order/';
 $route['detil-order-wait-payment']['GET']               = 'order/detailOrderwaitpay';
+$route['detil-wait-total-amount']['GET']                 = 'order/detilWaitTotalAmount';
 $route['detil-order-wait-payment-fin']['GET']           = 'order/detailOrderwaitpayfin';
 
 $route['set-rating']['POST']                            = 'profile/setRating';
