@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <title>Dashboard | LOGOL V.4</title>
@@ -11,14 +12,26 @@
     <link href="<?= base_url(); ?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="<?= base_url(); ?>assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-	<link href="<?= base_url(); ?>assets/libs/sweetalert2/sweetalert2.min.css?v=<?= rand(); ?>" id="app-style" rel="stylesheet" type="text/css" />
-    <link href="<?= base_url(); ?>assets/css/customs.min.css?v=<?= rand(); ?>"rel="stylesheet" type="text/css" />
-    <link href="<?= base_url(); ?>assets/css/kalibaru.min.css?v=<?= rand(); ?>"rel="stylesheet" type="text/css" />
-    <link href="<?= base_url(); ?>assets/css/bes.css?v=<?= rand(); ?>"rel="stylesheet" type="text/css" />
-	<script>let site_url = '<?php echo site_url(); ?>'; let base_url = '<?php echo base_url(); ?>';</script>
+    <link href="<?= base_url(); ?>assets/libs/sweetalert2/sweetalert2.min.css?v=<?= rand(); ?>" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url(); ?>assets/css/customs.min.css?v=<?= rand(); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url(); ?>assets/css/kalibaru.min.css?v=<?= rand(); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url(); ?>assets/css/bes.css?v=<?= rand(); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url(); ?>assets/js/select2-4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <script>
+        let site_url = '<?php echo site_url(); ?>';
+        let base_url = '<?php echo base_url(); ?>';
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB34M9Upe8AtZtwSogFYuy31rzUhjHXb3Q&libraries=places"></script>
     <script src="<?= base_url(); ?>assets/libs/jquery/jquery.min.js"></script>
     <script src="<?= base_url(); ?>assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="<?= base_url(); ?>assets/libs/sweetalert2/sweetalert2.min.js?v=<?= rand(); ?>"></script>
+    <script src="<?= base_url(); ?>assets/libs/sweetalert2/sweetalert2.min.js?v=<?= rand(); ?>"></script>
     <script src="<?= base_url(); ?>assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery-validation-1.19.4/dist/jquery.validate.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/select2-4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/LogolOrder.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/LogolOrderEDepot.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/LogolOrderIDepot.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/LogolOrderOnbehalf.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/LogolDetailPayment.js"></script>
 </head>

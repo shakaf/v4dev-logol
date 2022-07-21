@@ -1,5 +1,6 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 {_header_}
+
 <body class="inter-family pace-done" data-sidebar-size="sm">
     <div id="layout-wrapper">
         <nav class="nav-wrapper close">
@@ -15,9 +16,9 @@
                 {_navmenu_}
                 <ul class="logout-mode">
                     <li><a href="<?= site_url('logout'); ?>">
-                        <i class="icon-v4-logout"></i>
-                        <span class="link-name">Logout</span>
-                    </a></li>
+                            <i class="icon-v4-logout"></i>
+                            <span class="link-name">Logout</span>
+                        </a></li>
                 </ul>
             </div>
         </nav>
@@ -35,10 +36,11 @@
     <script src="<?= base_url(); ?>assets/libs/node-waves/waves.min.js"></script>
     <script src="<?= base_url(); ?>assets/libs/feather-icons/feather.min.js"></script>
     <script src="<?= base_url(); ?>assets/libs/pace-js/pace.min.js"></script>
-	<script src="<?= base_url(); ?>assets/js/app.js"></script>
+    <script src="<?= base_url(); ?>assets/js/app.js"></script>
     <script src="<?= base_url(); ?>assets/js/customs.js?v=<?= date("Ymdhis"); ?>"></script>
     <script src="<?= base_url(); ?>assets/js/LogolModal.min.js?v=<?= date("Ymdhis"); ?>"></script>
     <script src="<?= base_url(); ?>assets/js/LogolConfirm.min.js?v=<?= date("Ymdhis"); ?>"></script>
     <script src="<?= base_url(); ?>assets/js/LogolToast.min.js?v=<?= date("Ymdhis"); ?>"></script>
 </body>
+
 </html>

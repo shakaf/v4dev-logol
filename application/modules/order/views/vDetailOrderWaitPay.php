@@ -159,7 +159,13 @@
 
         <div class="row">
             <div class="d-flex flex-wrap">
-                <span><i class="fa fa-arrow-left"></i></span>
+                <span style="cursor:pointer" onclick="history.back()">
+                    <svg width=" 24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19" stroke="#4A4A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M5 12L9 16" stroke="#4A4A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M5 12L9 8" stroke="#4A4A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
                 <h4 style="font-size: 16px;margin-left:10px">Detail Order</h4>
             </div>
         </div>
@@ -590,9 +596,9 @@
 
                                         <input type="checkbox" class="" style="width: 20px; height: 20px;">
                                         <label class="form-title" style="vertical-align:middle; text-align: center; margin-left:1em; ">Select All</label>
-                                        <span class="badge rounded-pill badge-soft-primary" style="margin-left: 1em;">Send Email</span>
-                                        <span class="badge rounded-pill badge-soft-primary">Download</span>
-                                        <span class="badge rounded-pill badge-soft-success">Print</span>
+                                        <span class="badge rounded-pill badge-soft-primary" style="margin-left: 1em; cursor:pointer" data-bs-toggle="modal" data-bs-target="#confirmEmail">Send Email</span>
+                                        <span class="badge rounded-pill badge-soft-primary" style="cursor:pointer">Download</span>
+                                        <span class="badge rounded-pill badge-soft-success" style="cursor:pointer">Print</span>
                                     </div>
                                 </div>
                             </div>
@@ -627,7 +633,6 @@
         </div>
     </div>
 </div>
-
 <!-- modal cancel order -->
 <form action="" method="post">
     <div class="modal fade bs-example-modal-center" role="dialog" aria-hidden="true">
@@ -656,6 +661,30 @@
     </div>
 </form>
 <!-- /.modal -->
+
+<!-- modal confirm send email -->
+<form action="" method="get">
+    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" id="confirmEmail">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" align="center">
+                    <!-- <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+						<polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+					</svg> -->
+                    <img src="<?php echo base_url('assets/images/success.gif'); ?>" width="140" height="140" viewBox="0 0 140 140" fill="none" alt="">
+                    <p class="description">
+                        Your document has been sent to email</p>
+                    <p>jaka.morbius@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- end modal -->
 <script>
     $('.btnChoose').on('click', 'a', function() {
         $('.btnChoose a.active').removeClass('active');

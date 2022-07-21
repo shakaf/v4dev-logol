@@ -1,6 +1,7 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Login | LOGOL V4</title>
@@ -13,8 +14,9 @@
     <link href="<?= base_url(); ?>assets/css/bootstrap.min.css?v=<?= rand(); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <link href="<?= base_url(); ?>assets/css/icons.min.css?v=<?= rand(); ?>" rel="stylesheet" type="text/css" />
     <link href="<?= base_url(); ?>assets/css/app.min.css?v=<?= rand(); ?>" id="app-style" rel="stylesheet" type="text/css" />
-    <link href="<?= base_url(); ?>assets/css/customs.min.css?v=<?= rand(); ?>"rel="stylesheet" type="text/css" />
-    <link href="<?= base_url(); ?>assets/css/kalibaru.min.css?v=<?= rand(); ?>"rel="stylesheet" type="text/css" />
+    <link href="<?= base_url(); ?>assets/css/customs.min.css?v=<?= rand(); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url(); ?>assets/css/kalibaru.min.css?v=<?= rand(); ?>" rel="stylesheet" type="text/css" />
     <script src="<?= base_url(); ?>assets/libs/jquery/jquery.min.js?v=<?= rand(); ?>"></script>
     <script src="<?= base_url(); ?>assets/libs/bootstrap/js/bootstrap.bundle.min.js?v=<?= rand(); ?>"></script>
+
 </head>

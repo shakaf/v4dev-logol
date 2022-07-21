@@ -58,6 +58,411 @@ class OrderService extends MY_Service
 		}
 	}
 	
+	public function getShippingLine(){
+        $Curladapter = $this->curladapter;
+        $result = [];
+        $logolRpc = $Curladapter->logolServicesGet(CHECK_POINT_MASTER . 'shippingLine/list', array(), $this->newsession->userdata('accessToken'));
+        try
+        {
+            if($logolRpc['status'] == 1)
+            {
+                return $logolRpc['data'];
+            }
+            else
+            {
+                return [];
+            }
+        }
+        catch(Exception $e)
+        {
+            return [];
+        }
+    }
+
+	public function loadBillingEDepot(){
+		$Curladapter = $this->curladapter;
+        $result = [];
+		$list=array();
+		$payloads = array(
+			"OM_HEADER_ID"=>$_POST['om_header_id'],
+		);
+		$dt=array(
+            "url"=>CHECK_POINT_BILLING . 'loadBilling',
+            "post"=>$_POST,
+            "payloads"=>$payloads
+        );
+		/* return $dt; */
+
+        $logolRpc = $Curladapter->logolServicesPost(CHECK_POINT_BILLING . 'loadBilling', $payloads, $this->newsession->userdata('accessToken'));
+        try
+        {
+            if(!empty($logolRpc['status']) && $logolRpc['status'] == 1)
+            {
+				$session = array();
+				$dtpay = $logolRpc['data'];
+				$subsubt=0;
+				for ($i=0; $i < count($dtpay['DETAIL']); $i++) {
+					$subsubt=$subsubt+$dtpay['DETAIL'][$i]['TOTAL'];
+				}
+				$total = $subsubt + $dtpay['TAX_VALUE'] + $dtpay['BASIC_TAX'];
+				$session['total']=$total;
+				$this->session->set_userdata($session);
+                //return array("200");
+                return [
+                    'header' => [
+                        '__version' => [
+                            'number' => __VESION_APP,
+                            'process_time' => '',
+                            'generated' => date("Y-m-d H:i:s")
+                        ],
+                        'error' => FALSE,
+                        'message' => $logolRpc['message'],
+                        'csrf_v4kalibaru' => $csrfRefreshTokens
+                    ],
+                    'data' => [
+                        'status' => [
+                            'code' => 200
+                        ],
+                        'redirect' => [],
+                        'collection' => $logolRpc['data']
+                    ]
+                ];
+            }
+            else 
+            {	
+				$session = array();
+				$dtpay = $logolRpc['data'];
+				$subsubt=0;
+				for ($i=0; $i < count($dtpay['DETAIL']); $i++) {
+					$subsubt=$subsubt+$dtpay['DETAIL'][$i]['TOTAL'];
+				}
+				$total = $subsubt + $dtpay['TAX_VALUE'] + $dtpay['BASIC_TAX'];
+				$session['total']=$total;
+				$this->session->set_userdata($session);
+                //return array("201");
+                return [
+                    'header' => [
+                        '__version' => [
+                            'number' => __VESION_APP,
+                            'process_time' => '',
+                            'generated' => date("Y-m-d H:i:s")
+                        ],
+                        'error' => TRUE,
+                        'message' => 'Order request success',
+                        'csrf_v4kalibaru' => $csrfRefreshTokens
+                    ],
+                    'data' => [
+                        'status' => [
+                            'code' => 201
+                        ],
+                        'redirect' => [],
+                        'collection' => $logolRpc['data']
+                    ]
+                ];
+            }   
+        }
+        catch(Exception $e)
+        {
+            //return array("400");
+            return [
+                'header' => [
+                    '__version' => [
+                        'number' => __VESION_APP,
+                        'process_time' => '',
+                        'generated' => date("Y-m-d H:i:s")
+                    ],
+                    'error' => TRUE,
+                    'message' => 'Something when wrong',
+                    'csrf_v4kalibaru' => $csrfRefreshTokens
+                ],
+                'data' => [
+                    'status' => [
+                        'code' => 400
+                    ],
+                    'redirect' => [],
+                    'collection' => []
+                ]
+            ];
+        }
+	}
+
+	public function orderRequestEDepot(){
+		$Curladapter = $this->curladapter;
+        $result = [];
+		$list=array();
+		$container = json_decode($_POST['do_container']);
+		foreach ($container as $key => $value) {
+			$spl=explode("-",$value->id);
+			$dtc=array(
+				"CONTAINER_TYPE_ID"=> $spl[1],
+				"CONTAINER_TYPE"=> $value->type,
+				"CONTAINER_SIZE_ID"=> $spl[0],
+				"CONTAINER_SIZE"=> $value->height,
+				"QTY"=>intval($value->count)
+			);
+			$list[]=$dtc;
+		}
+        $payloads = array(
+			"DO_DATE"=>date("Y-m-d H:i:s"),
+			"COMPANY_ID"=>$_POST['do_companyid'],
+			"CARGO_OWNER_ID"=> $_POST['idnpwp'],
+			"DO_NO"=> $_POST["do_no"],
+			"DO_EXP_DATE"=>$_POST["do_date"],
+			"INT_REF_NO"=> $_POST["do_intrefno"],
+			"STATUS_CODE"=> "1",
+			"DEPOT_ID"=> $_POST["do_depot"],
+			"SHIPPING_ID"=>$_POST["do_shippingid"],
+			"SHIPPING_NAME"=>$_POST["do_shippingline"],
+			"CONTAINER_GRADE"=> $_POST["do_grade"],
+			"CONTAINER_LIST"=> $list,
+			"TOTAL_QTY"=> intval($_POST["do_qty"]),
+			"DO_FILE_NAME"=> $_FILES['img']['name'],
+			"DO_FILE_ENCODE"=> chunk_split(base64_encode(file_get_contents($_FILES['img']['tmp_name']))),
+			"CUSTOMS_REQ_DOC_FILE_NAME"=>"",
+			"CUSTOMS_REQ_DOC_FILE_ENCODE"=> "",
+			"CUSTOMS_RES_DOC_FILE_NAME"=> "",
+			"CUSTOMS_RES_DOC_FILE_ENCODE"=> ""
+		);
+        $dt=array(
+            "url"=>CHECK_POINT_DEPOT . 'orderRequest/export/depot',
+            "files"=>$_FILES,
+            "post"=>$_POST,
+            "payloads"=>$payloads
+        );
+        /* return $dt; */
+
+        $logolRpc = $Curladapter->logolServicesPost(CHECK_POINT_DEPOT . 'orderRequest/export/depot', $payloads, $this->newsession->userdata('accessToken'));
+        try
+        {
+            if(!empty($logolRpc['status']) && $logolRpc['status'] == 1)
+            {
+				$session = $payloads;
+				$session['type']="Export";
+				$session['CONTAINER_LIST']=json_encode($list);
+				$session['depot']=$_POST['depot'];
+				$session['npwp']=$_POST['npwp'];
+				$session['DEPOT_ID']=$logolRpc['data']['DEPOT_ID'];
+				$session['DP_REQ_ID']=$logolRpc['data']['DP_REQ_ID'];
+				$session['OM_HEADER_ID']=$logolRpc['data']['OM_HEADER_ID'];
+				$this->session->set_userdata($session);
+                //return array("200");
+                return [
+                    'header' => [
+                        '__version' => [
+                            'number' => __VESION_APP,
+                            'process_time' => '',
+                            'generated' => date("Y-m-d H:i:s")
+                        ],
+                        'error' => FALSE,
+                        'message' => $logolRpc['message'],
+                        'csrf_v4kalibaru' => $csrfRefreshTokens
+                    ],
+                    'data' => [
+                        'status' => [
+                            'code' => 200
+                        ],
+                        'redirect' => [],
+                        'collection' => $logolRpc['data']
+                    ]
+                ];
+            }
+            else 
+            {	
+				$session = $payloads;
+				$session['type']="Export";
+				$session['CONTAINER_LIST']=json_encode($list);
+				$session['depot']=$_POST['depot'];
+				$session['npwp']=$_POST['npwp'];
+				$session['DEPOT_ID']=$logolRpc['data']['DEPOT_ID'];
+				$session['DP_REQ_ID']=$logolRpc['data']['DP_REQ_ID'];
+				$session['OM_HEADER_ID']=$logolRpc['data']['OM_HEADER_ID'];
+				$this->session->set_userdata($session);
+                //return array("201");
+                return [
+                    'header' => [
+                        '__version' => [
+                            'number' => __VESION_APP,
+                            'process_time' => '',
+                            'generated' => date("Y-m-d H:i:s")
+                        ],
+                        'error' => TRUE,
+                        'message' => 'Order request success',
+                        'csrf_v4kalibaru' => $csrfRefreshTokens
+                    ],
+                    'data' => [
+                        'status' => [
+                            'code' => 201
+                        ],
+                        'redirect' => [],
+                        'collection' => $logolRpc['data']
+                    ]
+                ];
+            }   
+        }
+        catch(Exception $e)
+        {
+            //return array("400");
+            return [
+                'header' => [
+                    '__version' => [
+                        'number' => __VESION_APP,
+                        'process_time' => '',
+                        'generated' => date("Y-m-d H:i:s")
+                    ],
+                    'error' => TRUE,
+                    'message' => 'Something when wrong',
+                    'csrf_v4kalibaru' => $csrfRefreshTokens
+                ],
+                'data' => [
+                    'status' => [
+                        'code' => 400
+                    ],
+                    'redirect' => [],
+                    'collection' => []
+                ]
+            ];
+        }
+	}
+
+	public function orderRequestIDepot(){
+		$Curladapter = $this->curladapter;
+        $result = [];
+		$list=array();
+		$container = json_decode($_POST['do_container']);
+		foreach ($container as $key => $value) {
+			$spl=explode("-",$value->id);
+			$dtc=array(
+				"CONTAINER_TYPE_ID"=> $spl[1],
+				"CONTAINER_TYPE"=> $value->type,
+				"CONTAINER_SIZE_ID"=> $spl[0],
+				"CONTAINER_SIZE"=> $value->height,
+				"CONTAINER_NUMBER"=> $value->count,
+				"QTY"=>1
+			);
+			$list[]=$dtc;
+		}
+        $payloads = array(
+			"DO_DATE"=>date("Y-m-d H:i:s"),
+			"COMPANY_ID"=>$_POST['do_companyid'],
+			"CARGO_OWNER_ID"=> $_POST['idnpwp'],
+			"DO_NO"=> $_POST["do_no"],
+			"DO_EXP_DATE"=>$_POST["do_date"],
+			"INT_REF_NO"=> $_POST["do_intrefno"],
+			"STATUS_CODE"=> "1",
+			"DEPOT_ID"=> $_POST["do_depot"],
+			"SHIPPING_ID"=>$_POST["do_shippingid"],
+			"SHIPPING_NAME"=>$_POST["do_shippingline"],
+			"CONTAINER_GRADE"=> "",//$_POST["do_grade"],
+			"CONTAINER_LIST"=> $list,
+			"TOTAL_QTY"=> intval($_POST["do_qty"]),
+			"DO_FILE_NAME"=> $_FILES['img']['name'],
+			"DO_FILE_ENCODE"=> chunk_split(base64_encode(file_get_contents($_FILES['img']['tmp_name']))),
+			"CUSTOMS_REQ_DOC_FILE_NAME"=>"",
+			"CUSTOMS_REQ_DOC_FILE_ENCODE"=> "",
+			"CUSTOMS_RES_DOC_FILE_NAME"=> "",
+			"CUSTOMS_RES_DOC_FILE_ENCODE"=> ""
+		);
+        $dt=array(
+            "url"=>CHECK_POINT_DEPOT . 'orderRequest/import/depot',
+            "files"=>$_FILES,
+            "post"=>$_POST,
+            "payloads"=>$payloads
+        );
+        /* return $dt; */
+
+        $logolRpc = $Curladapter->logolServicesPost(CHECK_POINT_DEPOT . 'orderRequest/import/depot', $payloads, $this->newsession->userdata('accessToken'));
+        try
+        {
+            if(!empty($logolRpc['status']) && $logolRpc['status'] == 1)
+            {
+				$session = $payloads;
+				$session['type']="Import";
+				$session['CONTAINER_LIST']=json_encode($list);
+				$session['depot']=$_POST['depot'];
+				$session['npwp']=$_POST['npwp'];
+				$session['DEPOT_ID']=$logolRpc['data']['DEPOT_ID'];
+				$session['DP_REQ_ID']=$logolRpc['data']['DP_REQ_ID'];
+				$session['OM_HEADER_ID']=$logolRpc['data']['OM_HEADER_ID'];
+				$this->session->set_userdata($session);
+                //return array("200");
+                return [
+                    'header' => [
+                        '__version' => [
+                            'number' => __VESION_APP,
+                            'process_time' => '',
+                            'generated' => date("Y-m-d H:i:s")
+                        ],
+                        'error' => FALSE,
+                        'message' => $logolRpc['message'],
+                        'csrf_v4kalibaru' => $csrfRefreshTokens
+                    ],
+                    'data' => [
+                        'status' => [
+                            'code' => 200
+                        ],
+                        'redirect' => [],
+                        'collection' => $logolRpc['data']
+                    ]
+                ];
+            }
+            else 
+            {	
+				$session = $payloads;
+				$session['type']="Import";
+				$session['CONTAINER_LIST']=json_encode($list);
+				$session['depot']=$_POST['depot'];
+				$session['npwp']=$_POST['npwp'];
+				$session['DEPOT_ID']=$logolRpc['data']['DEPOT_ID'];
+				$session['DP_REQ_ID']=$logolRpc['data']['DP_REQ_ID'];
+				$session['OM_HEADER_ID']=$logolRpc['data']['OM_HEADER_ID'];
+				$this->session->set_userdata($session);
+                //return array("201");
+                return [
+                    'header' => [
+                        '__version' => [
+                            'number' => __VESION_APP,
+                            'process_time' => '',
+                            'generated' => date("Y-m-d H:i:s")
+                        ],
+                        'error' => TRUE,
+                        'message' => 'Order request success',
+                        'csrf_v4kalibaru' => $csrfRefreshTokens
+                    ],
+                    'data' => [
+                        'status' => [
+                            'code' => 201
+                        ],
+                        'redirect' => [],
+                        'collection' => $logolRpc['data']
+                    ]
+                ];
+            }   
+        }
+        catch(Exception $e)
+        {
+            //return array("400");
+            return [
+                'header' => [
+                    '__version' => [
+                        'number' => __VESION_APP,
+                        'process_time' => '',
+                        'generated' => date("Y-m-d H:i:s")
+                    ],
+                    'error' => TRUE,
+                    'message' => 'Something when wrong',
+                    'csrf_v4kalibaru' => $csrfRefreshTokens
+                ],
+                'data' => [
+                    'status' => [
+                        'code' => 400
+                    ],
+                    'redirect' => [],
+                    'collection' => []
+                ]
+            ];
+        }
+	}
+
     public function setRegister(){
 		try{
 			$this->load->library('recaptcha');

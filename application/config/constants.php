@@ -85,5 +85,8 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 defined('__VESION_APP')        OR define('__VESION_APP', '4.0-beta'); // API services logol
 defined('CHECK_POINT')         OR define('CHECK_POINT', 'http://34.87.19.200:4000/api/v4/'); // API services logol
+defined('CHECK_POINT_OM')         OR define('CHECK_POINT_OM', 'http://34.87.19.200:4001/api/v4/'); // API services logol
 defined('CHECK_POINT_MASTER')  OR define('CHECK_POINT_MASTER', 'http://34.87.19.200:4002/api/v4/'); // API services logol
+defined('CHECK_POINT_DEPOT')   OR define('CHECK_POINT_DEPOT', 'http://34.87.19.200:4003/api/v4/'); // API services logol
+defined('CHECK_POINT_BILLING')   OR define('CHECK_POINT_BILLING', 'http://34.87.19.200:4006/api/v4/'); // API services logol
 defined('REFRESH_TOKEN')       OR define('REFRESH_TOKEN', 'https://securetoken.googleapis.com/v1/token?key=AIzaSyAqI_zuXXFmccgzjo4RKq3VC_O52GdfHp0'); // API services logol

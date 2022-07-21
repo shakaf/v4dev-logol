@@ -7,7 +7,7 @@ class Order extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->service(array('CompanyProfileService', 'DashboardService'));
+		$this->load->service(array('CompanyProfileService', 'DashboardService','OnbehalfService','OrderService','OrderMgtService'));
 	}
 
 	public function index()
@@ -37,8 +37,13 @@ class Order extends CI_Controller
 				];
 			} else {
 				$view = "No content, Please kindly refresh";
+				$modal = $this->load->view('order/onbehalf/onBehalfModal', $data, true);
 				$post = $this->input->post('post');
-				$this->load->service(array('OrderService'));
+				$this->load->service(array('OrderService','OnbehalfService'));
+				$data['province']=$this->OnbehalfService->getOnbehalfProvince();
+				$data['shippingline']=$this->OrderService->getShippingLine();
+				$data['profile'] = $this->CompanyProfileService->getMainProfile();
+				$modal = $this->load->view('order/onbehalf/onBehalfModal', $data, true);
 				if ($post == "export-depot") {
 					$data['arrdepot'] = $this->OrderService->getDepot();
 					$view = $this->load->view('order/vRequestExportDepot', $data, true);
@@ -53,7 +58,8 @@ class Order extends CI_Controller
 				$arrayResponse = [
 					'status'		=> 100,
 					'message'		=> 'Successfully',
-					'html'			=> $view
+					'html'			=> $view,
+					'modal'			=> $modal
 				];
 			}
 			$arrayReturn['return'] = $arrayResponse;
@@ -139,7 +145,7 @@ class Order extends CI_Controller
 				'profileAttribute' => $_SESSION,
 				'isRequirement' => $this->DashboardService->isCompleteProfile()
 			];
-			$this->content = $this->load->view('home/vPay', $arrData, true);
+			$this->content = $this->load->view('order/vPay', $arrData, true);
 
 			$this->index();
 		}
@@ -176,21 +182,26 @@ class Order extends CI_Controller
 			} else {
 				$view = "No content, Please kindly refresh";
 				$post = $this->input->post('post');
+				$page = $this->input->post('page');
+				$size = $this->input->post('size');
+				$data=array();
+				$data['dtorder']=$this->OrderMgtService->getOrderMgt($post,$page,$size);
 				if ($post == "all") {
-					$view = $this->load->view('order/content-order/allOrder', '', true);
+					$view = $this->load->view('order/content-order/allOrder', $data, true);
 				} else if ($post == "draft") {
-					$view = $this->load->view('order/content-order/draftOrder', '', true);
+					$view = $this->load->view('order/content-order/draftOrder', $data, true);
 				} else if ($post == "payment") {
-					$view = $this->load->view('order/content-order/paymentOrder', '', true);
+					$view = $this->load->view('order/content-order/paymentOrder', $data, true);
 				} else if ($post == "progress") {
-					$view = $this->load->view('order/content-order/progressOrder', '', true);
+					$view = $this->load->view('order/content-order/progressOrder', $data, true);
 				} else if ($post == "issue") {
 					$view = $this->load->view('order/content-order/issueOrder', '', true);
 				}
 				$arrayResponse = [
 					'status'		=> 100,
 					'message'		=> 'Successfully',
-					'html'			=> $view
+					'html'			=> $view,
+					'data'			=> $data
 				];
 			}
 			$arrayReturn['return'] = $arrayResponse;
@@ -246,7 +257,24 @@ class Order extends CI_Controller
 		}
 	}
 
-	public function detilWaitTotalAmount()
+	public function detilPayment()
+	{
+		if (!$this->newsession->userdata('loggedIn')) {
+			redirect(site_url('login'));
+			exit();
+		} else {
+			//print_r($this->session->userdata());
+			$arrData = [
+				'profileAttribute' => $_SESSION,
+				'isRequirement' => $this->DashboardService->isCompleteProfile()
+			];
+			$this->content = $this->load->view('order/vDetailPayment', $arrData, true);
+
+			$this->index();
+		}
+	}
+
+	public function detilOrderIssues()
 	{
 		if (!$this->newsession->userdata('loggedIn')) {
 			redirect(site_url('login'));
@@ -256,9 +284,312 @@ class Order extends CI_Controller
 				'profileAttribute' => $_SESSION,
 				'isRequirement' => $this->DashboardService->isCompleteProfile()
 			];
-			$this->content = $this->load->view('order/vDetailWaitAmount', $arrData, true);
+			$this->content = $this->load->view('order/vDetailOrderIssues', $arrData, true);
 
 			$this->index();
+		}
+	}
+
+	public function getOnbehalf(){
+		header('Content-Type: application/json');
+		$data=array();
+		
+		$data = $this->OnbehalfService->getOnbehalf();
+		/* $data[]=array(
+			"npwp_id"=>"1",
+			"npwp_number"=>"90.000.000.0-000.000",
+			"npwp_name"=>"Rizki Fatimah",
+			"npwp_address"=>"JL. Tambak Sari No. 5 RT.02
+			RW.09, Kel. Tambak Sari, Kec. Simokerto, Kota Surabaya, Provinsi Jawa Timur (16402)",
+			"npwp_attachment"=>"NPWP Rizky.pdf"
+		); */
+		echo json_encode($data, JSON_PRETTY_PRINT);
+	}
+
+	public function getCities($idp){
+		$dataCities=$this->OnbehalfService->getOnbehalfCity($idp);
+		echo json_encode($dataCities);
+	}
+
+	public function getDistrict($idc){
+		$dataDistrict=$this->OnbehalfService->getOnbehalfDistrict($idc);
+		echo json_encode($dataDistrict);
+	}
+
+	public function getArea($idd){
+		$dataArea=$this->OnbehalfService->getOnbehalfArea($idd);
+		echo json_encode($dataArea);
+	}
+
+	public function setCallBackAddOnbehalf()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OnbehalfService->addOnbehalf();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+
+	public function setCallBackEditOnbehalf()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OnbehalfService->editOnbehalf();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+
+	public function setCallBackDelOnbehalf()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OnbehalfService->delOnbehalf();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+	public function getCallBackloadBillingEDepot(){
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OrderService->loadBillingEDepot();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+	public function setCallBackorderRequestEDepot()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OrderService->orderRequestEDepot();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+	public function setCallBackorderRequestIDepot()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OrderService->orderRequestIDepot();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
 		}
 	}
 }

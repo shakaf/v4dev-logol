@@ -93,11 +93,11 @@ $route['my-company-delete-digistamp']['POST']           = 'profile/setCallBackDe
 
 
 
-$route['my-order']['GET']                                 = 'order/allOrder';
+$route['my-order']['GET']                               = 'order/allOrder';
 $route['order-list/(:any)']['POST']                     = 'order/contentOrder/$1';
-$route['order-request/(:any)']['POST']                     = 'order/orderRequest/$1';
+$route['order-request/(:any)']['POST']                  = 'order/orderRequest/$1';
 
-$route['create-order']['GET']                             = 'order';
+$route['create-order']['GET']                           = 'order';
 $route['create-order-depo']['GET']                      = 'order/depoRequest';
 $route['create-order-depo/(:any)']['GET']               = 'order/depoRequest/$1';
 $route['create-order-depo-cart']['GET']                 = 'order/depoCart';
@@ -107,12 +107,33 @@ $route['create-order-gatepass/(:any)']['GET']           = 'order/gatepassRequest
 $route['create-order-gatepass-cart']['GET']             = 'order/gatepassCart';
 $route['create-order-gatepass-cart/(:any)']['GET']      = 'order/gatepassCart/$1';
 
+$route['onbehalf-get']['GET']                           = 'order/getOnbehalf';
+$route['onbehalf-cities/(:any)']['GET']                           = 'order/getCities/$1';
+$route['onbehalf-district/(:any)']['GET']                           = 'order/getDistrict/$1';
+$route['onbehalf-area/(:any)']['GET']                           = 'order/getArea/$1';
+
+$route['onbehalf-add']['POST']                          = 'order/setCallBackAddOnbehalf';
+$route['onbehalf-edit']['POST']                          = 'order/setCallBackEditOnbehalf';
+$route['onbehalf-delete']['POST']                           = 'order/setCallBackDelOnbehalf';
+$route['order-edepot']['POST']                           = 'order/setCallBackorderRequestEDepot';
+$route['order-idepot']['POST']                           = 'order/setCallBackorderRequestIDepot';
+
 $route['all-order']['GET']                              = 'order/allOrder';
 $route['detail-order']['GET']                           = 'order/detailOrder';
 $route['order-issue-detil']['GET']                      = 'order/';
 $route['detil-order-wait-payment']['GET']               = 'order/detailOrderwaitpay';
-$route['detil-wait-total-amount']['GET']                 = 'order/detilWaitTotalAmount';
+$route['detil-payment']['GET']                          = 'order/detilPayment';
+$route['load-billing']['POST']                          = 'order/getCallBackloadBillingEDepot';
 $route['detil-order-wait-payment-fin']['GET']           = 'order/detailOrderwaitpayfin';
+$route['detil-order-issues']['GET']                     = 'order/detilOrderIssues';
+
+$route['document-master']['GET']                        = 'document/documentmaster';
+$route['all-document']['GET']                           = 'document/alldocument';
+$route['document-list/(:any)']['POST']                  = 'document/contentDocument/$1';
+$route['detail-document']['GET']                        = 'document/detilDocInvoice';
+$route['detail-etrucking']['GET']                        = 'document/detilDocEtrucking';
+$route['print-invoice']['GET']                         = 'document/printInvoice';
+
 
 $route['set-rating']['POST']                            = 'profile/setRating';
 $route['e-gatepass']['GET']                             = 'home/getEGatepass';

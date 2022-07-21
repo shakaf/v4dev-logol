@@ -3,20 +3,16 @@
 		font-size: 9px;
 		padding-left: 40px;
 		padding-right: 40px;
-
 		padding-top: 10px;
 		padding-bottom: 10px;
-
 		border-radius: 21px;
 		margin-bottom: 2em;
-	}
-
-	.a-not {
 		background: #ECF1F4;
 		color: #002985;
+		margin-right: 10px;
 	}
 
-	.a-active {
+	.a-btn.active {
 		background: #002985;
 		color: white;
 	}
@@ -25,6 +21,14 @@
 		background-color: #ECF1F4;
 		width: 20px;
 		height: 20px;
+	}
+
+	.t-desc {
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 16px;
+		letter-spacing: 0.02em;
+		color: #0E0E2C;
 	}
 </style>
 <div class="container-fluid">
@@ -256,126 +260,182 @@ color: #8C8CA2;">We also provide ship schedules for your reference</div>
 									<div class="accordion-body">
 										<div class="row mb-5">
 											<div class="col-md-6">
-												<a href="#" class="a-btn a-active">SHOW ALL</a>
-												<a href="#" class="a-btn a-not">20'</a>
-												<a href="#" class="a-btn a-not">40'</a>
+												<ul class="nav nav-pills" id="pills-tab" role="tablist">
+													<li class="nav-item" role="presentation">
+														<a class="a-btn active" id="Showall" data-bs-toggle="pill" data-bs-target="#pills-Showall" type="button" role="tab" aria-selected="true">SHOW ALL</a>
+													</li>
+													<li class="nav-item" role="presentation">
+														<a class="a-btn" id="pills20tab" data-bs-toggle="pill" data-bs-target="#pills20" type="button" role="tab" aria-selected="false">20'</a>
+													</li>
+													<li class="nav-item" role="presentation">
+														<a class="a-btn" id="pills40tab" data-bs-toggle="pill" data-bs-target="#pills40" type="button" role="tab" aria-selected="false">40'</a>
+													</li>
+												</ul>
 											</div>
 											<div class="col-md-6" style="text-align: end;">
 												<span>
 													<label style="color: #4A4A68;font-weight: 700;font-size: 9px;line-height: 11px;vertical-align: middle; margin-right:10px;">Select All</label>
-													<input type="checkbox" class="chk_custom" onclick="chkAllCont(this)">
+													<input type="checkbox" class="chk_custom" id="checkall">
 												</span>
 											</div>
 										</div>
-
-										<div class="row">
-
-											<div class="col-md-6">
-												<div class="card">
-													<div class="card-body">
-														<div class="row">
-															<div class="col-md-6">
-
-																<label style="font-weight: 700; font-size: 9px; color: #FFFFFF; background: #4CAF50; padding:10px;    padding: 6px 21px; border-radius: 24px;">STACKED</label>
-
-																<h4 class="card-title card-gp-title">
-																	<span>
-																		<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-																			<g filter="url(#filter0_d_1338_38064)">
-																				<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																				<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																				<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																				<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																				<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										<div class="tab-content" id="pills-tabContent">
+											<!-- ====show all ==== -->
+											<div class="card-body tab-pane fade show active" id="pills-Showall" role="tabpanel" aria-labelledby="Showall">
+												<div class="row">
+													<div class="col-md-6">
+														<div class="card">
+															<div class="card-body">
+																<div class="row">
+																	<div class="col-md-8">
+																		<label style="font-weight: 700; font-size: 9px; color: #FFFFFF; background: #4CAF50; padding:10px;    padding: 6px 21px; border-radius: 24px;">STACKED</label>
+																	</div>
+																	<div class="col-md-4" style="text-align:end;">
+																		<input type="checkbox" class="chk_custom checkitem">
+																	</div>
+																</div>
+																<div class="d-flex flex-row">
+																	<div class="p-2"><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<g clip-path="url(#clip0_2621_103660)">
+																				<path d="M2.5 6H22.5V18H2.5V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M6.5 10L6.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M10.5 10L10.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M14.5 10L14.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M18.5 10L18.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 																			</g>
 																			<defs>
-																				<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-																					<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-																					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
-																					<feOffset dy="4"></feOffset>
-																					<feGaussianBlur stdDeviation="2"></feGaussianBlur>
-																					<feComposite in2="hardAlpha" operator="out"></feComposite>
-																					<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
-																					<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064"></feBlend>
-																					<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape"></feBlend>
-																				</filter>
+																				<clipPath id="clip0_2621_103660">
+																					<rect width="24" height="24" fill="white" transform="translate(0.5)" />
+																				</clipPath>
 																			</defs>
-																		</svg>
-																	</span>20’ GP - EGHU3826956
-																</h4>
-															</div>
-															<div class="col-md-6" style="text-align:end;">
-																<input type="checkbox" class="chk_custom">
-															</div>
-														</div>
+																		</svg></div>
+																	<div class="p-2">
+																		<h4 class="card-title card-gp-title" style="color:#002985;">
+																			20’ GP - EGHU3826956
+																		</h4>
+																	</div>
+																</div>
 
-
-														<div class="row">
-															<div class="col-md-6">
-																<label class="label">Stacking Date</label>
-																<p class="l_val">12-06-2021 | 22:45</p>
-															</div>
-															<div class="col-md-6">
-																<input type="text" placeholder="PAY THRU DATE" class="form-control">
+																<div class="row">
+																	<div class="col-md-6">
+																		<label class="label">Stacking Date</label>
+																		<p class="l_val">12-06-2021 | 22:45</p>
+																	</div>
+																	<div class="col-md-6">
+																		<input type="text" placeholder="PAY THRU DATE" class="form-control">
+																	</div>
+																</div>
 															</div>
 														</div>
 													</div>
+													<div class="col-md-6">
+														<div class="card">
+															<div class="card-body">
+																<div class="row">
+																	<div class="col-md-8">
+																		<label style="font-weight: 700; font-size: 9px; color: #FFFFFF; background: #4CAF50; padding:10px;    padding: 6px 21px; border-radius: 24px;">STACKED</label>
+																	</div>
+																	<div class="col-md-4" style="text-align:end;">
+																		<input type="checkbox" class="chk_custom checkitem">
+																	</div>
+																</div>
+																<div class="d-flex flex-row">
+																	<div class="p-2"><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<g clip-path="url(#clip0_2621_103660)">
+																				<path d="M2.5 6H22.5V18H2.5V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M6.5 10L6.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M10.5 10L10.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M14.5 10L14.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M18.5 10L18.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																			</g>
+																			<defs>
+																				<clipPath id="clip0_2621_103660">
+																					<rect width="24" height="24" fill="white" transform="translate(0.5)" />
+																				</clipPath>
+																			</defs>
+																		</svg></div>
+																	<div class="p-2">
+																		<h4 class="card-title card-gp-title" style="color:#002985;">
+																			20’ GP - EGHU3826956
+																		</h4>
+																	</div>
+																</div>
+
+																<div class="row">
+																	<div class="col-md-6">
+																		<label class="label">Stacking Date</label>
+																		<p class="l_val">12-06-2021 | 22:45</p>
+																	</div>
+																	<div class="col-md-6">
+																		<input type="text" placeholder="PAY THRU DATE" class="form-control">
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="card">
+															<div class="card-body">
+																<div class="row">
+																	<div class="col-md-8">
+																		<label style="font-weight: 700; font-size: 9px; color: #FFFFFF; background: #4CAF50; padding:10px;    padding: 6px 21px; border-radius: 24px;">STACKED</label>
+																	</div>
+																	<div class="col-md-4" style="text-align:end;">
+																		<input type="checkbox" class="chk_custom checkitem">
+																	</div>
+																</div>
+																<div class="d-flex flex-row">
+																	<div class="p-2"><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<g clip-path="url(#clip0_2621_103660)">
+																				<path d="M2.5 6H22.5V18H2.5V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M6.5 10L6.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M10.5 10L10.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M14.5 10L14.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																				<path d="M18.5 10L18.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																			</g>
+																			<defs>
+																				<clipPath id="clip0_2621_103660">
+																					<rect width="24" height="24" fill="white" transform="translate(0.5)" />
+																				</clipPath>
+																			</defs>
+																		</svg></div>
+																	<div class="p-2">
+																		<h4 class="card-title card-gp-title" style="color:#002985;">
+																			20’ GP - EGHU3826956
+																		</h4>
+																	</div>
+																</div>
+
+																<div class="row">
+																	<div class="col-md-6">
+																		<label class="label">Stacking Date</label>
+																		<p class="l_val">12-06-2021 | 22:45</p>
+																	</div>
+																	<div class="col-md-6">
+																		<input type="text" placeholder="PAY THRU DATE" class="form-control">
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="card">
-													<div class="card-body">
-														<div class="row">
-															<div class="col-md-6">
 
-																<label style="font-weight: 700; font-size: 9px; color: #FFFFFF; background: #4CAF50; padding:10px;    padding: 6px 21px; border-radius: 24px;">STACKED</label>
+											<!-- ===exp 20'==== -->
+											<div class="card-body tab-pane fade" id="pills20" role="tabpanel" aria-labelledby="pills20tab">
+												<div class="row">
+													content 2
+												</div>
+											</div>
 
-																<h4 class="card-title card-gp-title">
-																	<span>
-																		<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-																			<g filter="url(#filter0_d_1338_38064)">
-																				<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																				<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																				<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																				<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																				<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-																			</g>
-																			<defs>
-																				<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-																					<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-																					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
-																					<feOffset dy="4"></feOffset>
-																					<feGaussianBlur stdDeviation="2"></feGaussianBlur>
-																					<feComposite in2="hardAlpha" operator="out"></feComposite>
-																					<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
-																					<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064"></feBlend>
-																					<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape"></feBlend>
-																				</filter>
-																			</defs>
-																		</svg>
-																	</span>20’ GP - EGHU3826956
-																</h4>
-															</div>
-															<div class="col-md-6" style="text-align:end;">
-																<input type="checkbox" class="chk_custom">
-															</div>
-														</div>
-
-
-														<div class="row">
-															<div class="col-md-6">
-																<label class="label">Stacking Date</label>
-																<p class="l_val">12-06-2021 | 22:45</p>
-															</div>
-															<div class="col-md-6">
-																<input type="text" placeholder="PAY THRU DATE" class="form-control">
-															</div>
-														</div>
-													</div>
+											<!-- ===exp 40'==== -->
+											<div class="card-body tab-pane fade" id="pills40" role="tabpanel" aria-labelledby="pills40tab">
+												<div class="row">
+													content 3 disini
 												</div>
 											</div>
 										</div>
-
 									</div>
 									<div class="row mx-2 mb-2">
 										<div class="col-lg-10">&nbsp;</div>
@@ -394,11 +454,16 @@ color: #8C8CA2;">We also provide ship schedules for your reference</div>
 						</div>
 					</div>
 					<div class="tab-pane" id="steps-2">
-						<ul class="pager wizard twitter-bs-wizard-pager-link">
-							<li class="previous">
-								<span style="cursor:pointer;">Back To Create Order</span>
-							</li>
-						</ul>
+						<div class="d-flex flex-wrap">
+							<span style="cursor:pointer" onclick="history.back()">
+								<svg width=" 24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M5 12H19" stroke="#4A4A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+									<path d="M5 12L9 16" stroke="#4A4A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+									<path d="M5 12L9 8" stroke="#4A4A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</span>
+							<p style="font-size: 12px;margin-left:10px; font-weight: 700;">Back To Create Order</p>
+						</div>
 						<div class="row mt-3">
 							<div class="col-md-8">
 								<div class="card mb-0">
@@ -411,8 +476,8 @@ color: #8C8CA2;">We also provide ship schedules for your reference</div>
 												</div>
 											</div>
 											<div class="col-md-5 col-sm-5" style="text-align: end;">
-												<button type="button" class="btn btn-outline-secondary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Cancel Order</button>
-												<button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-booking">Booking Now</button>
+												<button type="button" class="btn btn-outline-secondary" style="font-size: 12px;border-radius:10px; border: 1 px solid #8C8CA2;" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Cancel Order</button>
+												<button type="button" class="btn btn-primary" style="font-size: 12px; border-radius:10px; background:#497DF5;;" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center-booking">Booking Now</button>
 											</div>
 										</div>
 									</div>
@@ -450,49 +515,47 @@ color: #8C8CA2;">We also provide ship schedules for your reference</div>
 
 								<div class="nav-title mt-5">
 									<h5>Your Order Listing</h5>
-									<p>Please select which order you will process into the next step (payment)</p>
+									<p>Please, review your order before you will process into the next step (booking now)</p>
 								</div>
-
+								<!-- 
 								<div class="row">
 									<div class="col-md-12 col-sm-12">
-										<input type="checkbox" class="" style="width: 20px; height: 20px;" onclick="chkAllSummary(this)">
+										<input type="checkbox" style="width: 20px; height: 20px;" id="checkallList">
 										<label class="form-title" style="vertical-align:middle; text-align: center; margin-left:1em;">Select All</label>
 									</div>
-								</div>
+								</div> -->
 
 								<div class="row mt-3">
+									<!-- <div class="col-md-1 col-sm-1">
+										<input type="checkbox" class="checkitemlist" id="checkall2" style="width: 20px; height: 20px;">
+									</div> -->
 
-									<div class="col-md-1 col-sm-1">
-										<input type="checkbox" class="" style="width: 20px; height: 20px;">
-									</div>
-									<div class="col-md-11 col-sm-11" style="margin-left:-2.5em">
+									<div class="col-md-12 col-sm-12">
 										<div class="card">
 											<div class="card-header bg-transparent border-bottom">
 												<h6>E-Port</h6>
-												<p>Port Order Detail</p>
+												<p class="description">Port Order Detail</p>
 											</div>
 											<div class="card-body p-4">
-
 												<div class="row">
-
-													<div class="col-md-3 col-sm-3">
-														<label class="t-title">Customs Doc. Type</label>
+													<div class="col-md-4 col-sm-4">
+														<label class="t-title description">Customs Doc. Type</label>
 														<p class="t-desc">NPE</p>
 													</div>
-													<div class="col-md-3 col-sm-3">
-														<label class="t-title">Request Doc. Number</label>
+													<div class="col-md-4 col-sm-4">
+														<label class="t-title description">Request Doc. Number</label>
 														<p class="t-desc">NPE_1188115</p>
 													</div>
-													<div class="col-md-3 col-sm-3">
-														<label class="t-title">Request Doc. Date</label>
+													<div class="col-md-4 col-sm-4">
+														<label class="t-title description">Request Doc. Date</label>
 														<p class="t-desc">21/04/2022</p>
 													</div>
-													<div class="col-md-3 col-sm-3">
-														<label class="t-title">Response Doc. Number</label>
+													<div class="col-md-4 col-sm-4">
+														<label class="t-title description">Response Doc. Number</label>
 														<p class="t-desc">PEB_11KUI899</p>
 													</div>
-													<div class="col-md-3 col-sm-3">
-														<label class="t-title">Response Doc. Date</label>
+													<div class="col-md-4 col-sm-4">
+														<label class="t-title description">Response Doc. Date</label>
 														<p class="t-desc">21/04/2022</p>
 													</div>
 
@@ -501,10 +564,9 @@ color: #8C8CA2;">We also provide ship schedules for your reference</div>
 															<div class="card">
 																<div class="card-body">
 																	<div class="row">
-																		<div class="col-md-10">
+																		<div class="col-md-12">
 																			<label style="font-weight: 700; font-size: 9px; color: #FFFFFF; background: #4CAF50; padding:10px;    padding: 6px 21px; border-radius: 24px;">STACKED</label>
-																			<h4 class="card-title card-gp-title" style="font-weight: 500;
-font-size: 14px;color: #002985;">
+																			<h4 class="card-title card-gp-title" style="font-weight: 500;font-size: 14px;color: #002985;">
 																				<span>
 																					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 																						<g filter="url(#filter0_d_1338_38064)">
@@ -530,37 +592,75 @@ font-size: 14px;color: #002985;">
 																				</span>20’ GP - EGHU3826956
 																			</h4>
 																		</div>
-																		<div class="col-md-2" style="text-align:end;">
-																			<input type="checkbox" class="chk_custom">
-																		</div>
-
-
+																		<!-- <div class="col-md-2" style="text-align:end;">
+																			<input type="checkbox" class="chk_custom checkitemlist2">
+																		</div> -->
 																	</div>
-
-
 																	<div class="row">
 																		<div class="col-md-6">
-																			<label class="label" style="font-weight: 700;
-font-size: 10px;color: #0E0E2C;">STACKING DATE</label>
-																			<p class="l_val" style="font-weight: 400;
-font-size: 12px;">12-06-2021 | 22:45</p>
+																			<label class="label" style="font-weight: 700;font-size: 10px;color: #0E0E2C;">STACKING DATE</label>
+																			<p class="l_val" style="font-weight: 400;font-size: 12px;">12-06-2021 | 22:45</p>
 																		</div>
 																		<div class="col-md-6">
-																			<label class="label" style="font-weight: 700;
-font-size: 10px;color: #0E0E2C;">PAY THRU DATE</label>
-																			<p class="l_val" style="font-weight: 400;
-font-size: 12px;">12-06-2021 | 23:20</p>
+																			<label class="label" style="font-weight: 700;font-size: 10px;color: #0E0E2C;">PAY THRU DATE</label>
+																			<p class="l_val" style="font-weight: 400;font-size: 12px;">12-06-2021 | 23:20</p>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
 
-
+														<div class="col-md-6">
+															<div class="card">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-md-12">
+																			<label style="font-weight: 700; font-size: 9px; color: #FFFFFF; background: #4CAF50; padding:10px;    padding: 6px 21px; border-radius: 24px;">STACKED</label>
+																			<h4 class="card-title card-gp-title" style="font-weight: 500;font-size: 14px;color: #002985;">
+																				<span>
+																					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+																						<g filter="url(#filter0_d_1338_38064)">
+																							<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																							<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																							<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																							<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																							<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																						</g>
+																						<defs>
+																							<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+																								<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+																								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+																								<feOffset dy="4"></feOffset>
+																								<feGaussianBlur stdDeviation="2"></feGaussianBlur>
+																								<feComposite in2="hardAlpha" operator="out"></feComposite>
+																								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+																								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064"></feBlend>
+																								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape"></feBlend>
+																							</filter>
+																						</defs>
+																					</svg>
+																				</span>20’ GP - EGHU3826956
+																			</h4>
+																		</div>
+																		<!-- <div class="col-md-2" style="text-align:end;">
+																			<input type="checkbox" class="chk_custom checkitemlist2">
+																		</div> -->
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6">
+																			<label class="label" style="font-weight: 700;font-size: 10px;color: #0E0E2C;">STACKING DATE</label>
+																			<p class="l_val" style="font-weight: 400;font-size: 12px;">12-06-2021 | 22:45</p>
+																		</div>
+																		<div class="col-md-6">
+																			<label class="label" style="font-weight: 700;font-size: 10px;color: #0E0E2C;">PAY THRU DATE</label>
+																			<p class="l_val" style="font-weight: 400;font-size: 12px;">12-06-2021 | 23:20</p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
 													</div>
-
 												</div>
-
 											</div>
 										</div>
 									</div>
@@ -571,7 +671,7 @@ font-size: 12px;">12-06-2021 | 23:20</p>
 								<div class="card">
 									<div class="card-header bg-transparent border-bottom">
 										<h6>Payment Summary</h6>
-										<p>This is your payment summary from your order</p>
+										<p class="description">This is your payment summary from your order</p>
 									</div>
 									<div class="card-body">
 										<div class="row">
@@ -588,7 +688,7 @@ font-size: 12px;">12-06-2021 | 23:20</p>
 														<path d="M15.1211 35.6904C14.0219 35.6942 13.1317 36.5843 13.1279 37.6835C13.1236 38.7885 14.0161 39.6876 15.1211 39.6914H17.2588C18.3638 39.6876 19.2563 38.7885 19.2519 37.6835C19.2482 36.5843 18.358 35.6942 17.2588 35.6904H15.1211Z" fill="#CDD0D6" />
 													</svg>
 
-													<p class="mt-4">There’s no information to show. Please select which services should be process.</p>
+													<p class="mt-4 description">There’s no information to show. Please select which services should be process.</p>
 												</div>
 												<div id="p_details2" style="display:none;" class="">
 													<div class="accordion" id="accordionExamplePay">
@@ -666,7 +766,7 @@ font-size: 12px;">12-06-2021 | 23:20</p>
 														</div>
 													</div><!-- end accordion -->
 												</div>
-												<a class="btn btn-secondary w-100 mt-5" href="<?= site_url('payment') ?>" id="btn-mthd" disabled>Select Payment Method</a>
+												<!-- <a class="btn btn-secondary w-100 mt-5" href="<?= site_url('payment') ?>" id="btn-mthd" disabled>Select Payment Method</a> -->
 												<!--<button type="button" class="btn btn-outline-light waves-effect mt-4 w-100" style="border: none !important">Cancel Order</button>-->
 											</div>
 										</div>
@@ -725,39 +825,41 @@ font-size: 12px;">12-06-2021 | 23:20</p>
 		}
 	}
 
-	function chkAllCont(ele) {
-		var checkboxes = document.getElementsByTagName('input');
-		if (ele.checked) {
-			for (var i = 0; i < checkboxes.length; i++) {
-				if (checkboxes[i].type == 'checkbox') {
-					checkboxes[i].checked = true;
-				}
-			}
-		} else {
-			for (var i = 0; i < checkboxes.length; i++) {
-				if (checkboxes[i].type == 'checkbox') {
-					checkboxes[i].checked = false;
-				}
-			}
+	$("#checkall").change(function() {
+		$(".checkitem").prop("checked", $(this).prop("checked"))
+	})
+	$(".checkitem").change(function() {
+		if ($(this).prop("checked") == false) {
+			$("#checkall").prop("checked", false)
 		}
-	}
+		if ($(".checkitem:checked").length == $(".checkitem").length) {
+			$("#checkall").prop("checked", true)
+		}
+	})
 
-	// function chkAllSummary(ele) {
-	// 	var checkboxes = document.getElementsByTagName('input');
-	// 	if (ele.checked) {
-	// 		for (var i = 0; i < checkboxes.length; i++) {
-	// 			if (checkboxes[i].type == 'checkbox') {
-	// 				checkboxes[i].checked = true;
-	// 			}
-	// 		}
-	// 	} else {
-	// 		for (var i = 0; i < checkboxes.length; i++) {
-	// 			if (checkboxes[i].type == 'checkbox') {
-	// 				checkboxes[i].checked = false;
-	// 			}
-	// 		}
-	// 	}
-	// }
+	$("#checkallList").change(function() {
+		$(".checkitemlist").prop("checked", $(this).prop("checked"))
+	})
+	$(".checkitemlist").change(function() {
+		if ($(this).prop("checked") == false) {
+			$("#checkallList").prop("checked", false)
+		}
+		if ($(".checkitemlist:checked").length == $(".checkitemlist").length) {
+			$("#checkallList").prop("checked", true)
+		}
+	})
+
+	$("#checkall2").change(function() {
+		$(".checkitemlist2").prop("checked", $(this).prop("checked"))
+	})
+	$(".checkitemlist2").change(function() {
+		if ($(this).prop("checked") == false) {
+			$("#checkall2").prop("checked", false)
+		}
+		if ($(".checkitemlist2:checked").length == $(".checkitemlist2").length) {
+			$("#checkall2").prop("checked", true)
+		}
+	})
 
 	$(document).ready(function() {
 		$('#basic-pills-wizard').bootstrapWizard();
@@ -1065,26 +1167,38 @@ font-size: 12px;">12-06-2021 | 23:20</p>
 <form action="" method="post">
 	<div class="modal fade bs-example-modal-center" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-delete">
-				<div class="modal-body" align="center">
-					<div>
-						<svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M40.763 135.562C39.7316 135.562 38.8693 134.778 38.7719 133.751L36.44 109.16C36.3287 107.986 37.2519 106.971 38.431 106.971L102.024 106.971C103.217 106.971 104.144 108.008 104.011 109.194L101.256 133.785C101.142 134.797 100.286 135.562 99.268 135.562L40.763 135.562Z" fill="#1627A1" />
-							<path d="M78.0603 73.8184C76.7876 73.8184 75.9391 74.6668 75.9391 75.9396L73.8179 121.97C73.8179 123.243 74.6664 124.091 75.9391 124.091C76.9997 124.091 78.0603 123.243 78.0603 121.97L80.1815 75.9396C80.1815 74.879 79.1209 73.8184 78.0603 73.8184Z" fill="#1C3E58" />
-							<path d="M61.9391 73.8184C60.6664 73.8184 59.8179 74.879 59.8179 75.9396L61.9391 121.97C61.9391 123.03 62.9997 124.091 64.0603 124.091C65.333 124.091 66.1815 123.03 66.1815 121.97L64.0603 75.9396C64.0603 74.6668 62.9997 73.8184 61.9391 73.8184Z" fill="#1C3E58" />
-							<path d="M94.1816 73.8179C92.9088 73.6058 91.8482 74.4542 91.8482 75.5148L85.2725 121.545C85.0603 122.606 85.9088 123.878 86.9694 123.878C88.03 124.091 89.3028 123.242 89.3028 122.182L95.8785 76.3633C96.0906 75.0906 95.2422 74.03 94.1816 73.8179Z" fill="#1C3E58" />
-							<path d="M45.8181 73.8176C44.7575 74.0298 43.909 75.0904 44.1211 76.151L50.6969 122.181C50.909 123.242 51.7575 124.09 52.8181 124.09C54.0908 124.09 55.1514 123.03 54.9393 121.757L48.3635 75.7267C48.1514 74.454 47.0908 73.6055 45.8181 73.8176Z" fill="#1C3E58" />
-							<path d="M113.06 37.9696C115.818 35.212 115.818 30.9696 113.06 28.212C110.727 25.8787 91.6362 6.99988 88.8787 4.03018C86.3332 1.48473 81.6665 1.48473 79.1211 4.03018C70.8484 12.3029 47.7271 35.4241 38.6059 44.5453C37.5453 45.6059 36.909 46.6665 36.6968 48.1514H29.6968C25.2423 48.1514 21.6362 51.7575 21.6362 56.212C21.6362 60.6665 25.2423 64.0605 29.4847 64.2726L36.6968 130.242C37.1211 134.485 40.7271 137.879 44.9696 137.879H95.0302C99.2726 137.879 102.879 134.697 103.303 130.454L110.515 64.4847C114.97 64.4847 118.364 60.8787 118.364 56.4241C118.364 51.9696 114.757 48.3635 110.303 48.3635H102.667C103.091 48.1514 113.273 37.7575 113.06 37.9696ZM110.091 34.9999L103.939 41.1514C100.545 36.4847 100.545 29.909 103.939 25.2423L110.091 31.3938C111.151 32.4544 111.151 33.9393 110.091 34.9999ZM85.0605 60.0302H50.909C55.5756 53.6665 55.3635 44.7575 50.4847 38.6059L72.9696 16.1211C79.3332 21.212 88.4544 21.212 94.8181 16.1211L100.757 22.0605C95.6665 28.4241 95.6665 37.5453 100.757 43.909L85.0605 60.0302ZM82.0908 7.212C83.1514 6.1514 84.8484 6.1514 85.909 7.212L92.0605 13.3635C87.3938 16.7575 80.8181 16.7575 76.1514 13.3635L82.0908 7.212ZM41.3635 47.7271L47.515 41.5756C50.909 46.2423 50.909 52.6059 47.515 57.4847L41.3635 51.3332C40.515 50.4847 40.515 48.7878 41.3635 47.7271ZM25.8787 56.212C25.8787 54.0908 27.5756 52.3938 29.6968 52.3938H37.1211C37.5453 53.0302 37.9696 53.6665 38.3938 54.3029L43.909 59.8181H31.1817H29.6968C27.5756 60.0302 25.8787 58.3332 25.8787 56.212ZM99.0605 129.818C98.8484 131.939 97.1514 133.636 95.0302 133.636H44.9696C42.8484 133.636 41.1514 131.939 40.9393 129.818L33.7271 64.2726H106.273L99.0605 129.818ZM110.303 52.6059C112.424 52.6059 114.121 54.3029 114.121 56.4241C114.121 58.5453 112.424 60.2423 110.303 60.2423H108.606H90.9999L98.6362 52.6059H110.303Z" fill="#1C3E58" />
-						</svg>
+			<div class="modal-content">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div>
+							<h5 class="modal-title" style="font-weight: 700;font-size: 16px;color: #4A4A68;">Confirmation</h5>
+							<p class="description">You can save or cancel this order</p>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<p>Cancel Order</p>
-					<p style="color: #818181;font-weight: 400;font-size: 14px;padding: 16px 43px;">Do you want to cancel this order? Orders will not be processed</p>
-					<div class="row">
-						<div class="col-md-6 col-sm-6"><button style="width:100%;" type="button" class="btn cancelModal waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Cancel Order</button></div>
-						<div class="col-md-6 col-sm-6"><button style="width:100%;" type="button" class="btn keepOrder waves-effect waves-light">Keep Order</button></div>
+					<div class="modal-body" align="center">
+						<div>
+							<svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M40.763 135.562C39.7316 135.562 38.8693 134.778 38.7719 133.751L36.44 109.16C36.3287 107.986 37.2519 106.971 38.431 106.971L102.024 106.971C103.217 106.971 104.144 108.008 104.011 109.194L101.256 133.785C101.142 134.797 100.286 135.562 99.268 135.562L40.763 135.562Z" fill="#1627A1" />
+								<path d="M78.0603 73.8184C76.7876 73.8184 75.9391 74.6668 75.9391 75.9396L73.8179 121.97C73.8179 123.243 74.6664 124.091 75.9391 124.091C76.9997 124.091 78.0603 123.243 78.0603 121.97L80.1815 75.9396C80.1815 74.879 79.1209 73.8184 78.0603 73.8184Z" fill="#1C3E58" />
+								<path d="M61.9391 73.8184C60.6664 73.8184 59.8179 74.879 59.8179 75.9396L61.9391 121.97C61.9391 123.03 62.9997 124.091 64.0603 124.091C65.333 124.091 66.1815 123.03 66.1815 121.97L64.0603 75.9396C64.0603 74.6668 62.9997 73.8184 61.9391 73.8184Z" fill="#1C3E58" />
+								<path d="M94.1816 73.8179C92.9088 73.6058 91.8482 74.4542 91.8482 75.5148L85.2725 121.545C85.0603 122.606 85.9088 123.878 86.9694 123.878C88.03 124.091 89.3028 123.242 89.3028 122.182L95.8785 76.3633C96.0906 75.0906 95.2422 74.03 94.1816 73.8179Z" fill="#1C3E58" />
+								<path d="M45.8181 73.8176C44.7575 74.0298 43.909 75.0904 44.1211 76.151L50.6969 122.181C50.909 123.242 51.7575 124.09 52.8181 124.09C54.0908 124.09 55.1514 123.03 54.9393 121.757L48.3635 75.7267C48.1514 74.454 47.0908 73.6055 45.8181 73.8176Z" fill="#1C3E58" />
+								<path d="M113.06 37.9696C115.818 35.212 115.818 30.9696 113.06 28.212C110.727 25.8787 91.6362 6.99988 88.8787 4.03018C86.3332 1.48473 81.6665 1.48473 79.1211 4.03018C70.8484 12.3029 47.7271 35.4241 38.6059 44.5453C37.5453 45.6059 36.909 46.6665 36.6968 48.1514H29.6968C25.2423 48.1514 21.6362 51.7575 21.6362 56.212C21.6362 60.6665 25.2423 64.0605 29.4847 64.2726L36.6968 130.242C37.1211 134.485 40.7271 137.879 44.9696 137.879H95.0302C99.2726 137.879 102.879 134.697 103.303 130.454L110.515 64.4847C114.97 64.4847 118.364 60.8787 118.364 56.4241C118.364 51.9696 114.757 48.3635 110.303 48.3635H102.667C103.091 48.1514 113.273 37.7575 113.06 37.9696ZM110.091 34.9999L103.939 41.1514C100.545 36.4847 100.545 29.909 103.939 25.2423L110.091 31.3938C111.151 32.4544 111.151 33.9393 110.091 34.9999ZM85.0605 60.0302H50.909C55.5756 53.6665 55.3635 44.7575 50.4847 38.6059L72.9696 16.1211C79.3332 21.212 88.4544 21.212 94.8181 16.1211L100.757 22.0605C95.6665 28.4241 95.6665 37.5453 100.757 43.909L85.0605 60.0302ZM82.0908 7.212C83.1514 6.1514 84.8484 6.1514 85.909 7.212L92.0605 13.3635C87.3938 16.7575 80.8181 16.7575 76.1514 13.3635L82.0908 7.212ZM41.3635 47.7271L47.515 41.5756C50.909 46.2423 50.909 52.6059 47.515 57.4847L41.3635 51.3332C40.515 50.4847 40.515 48.7878 41.3635 47.7271ZM25.8787 56.212C25.8787 54.0908 27.5756 52.3938 29.6968 52.3938H37.1211C37.5453 53.0302 37.9696 53.6665 38.3938 54.3029L43.909 59.8181H31.1817H29.6968C27.5756 60.0302 25.8787 58.3332 25.8787 56.212ZM99.0605 129.818C98.8484 131.939 97.1514 133.636 95.0302 133.636H44.9696C42.8484 133.636 41.1514 131.939 40.9393 129.818L33.7271 64.2726H106.273L99.0605 129.818ZM110.303 52.6059C112.424 52.6059 114.121 54.3029 114.121 56.4241C114.121 58.5453 112.424 60.2423 110.303 60.2423H108.606H90.9999L98.6362 52.6059H110.303Z" fill="#1C3E58" />
+							</svg>
+						</div>
+						<p style="color: #818181;font-weight: 400;font-size: 14px;padding: 16px 43px;">Do you want to cancel this order? Orders will not be processed</p>
+						<div class="row">
+							<div class="col-md-6">
+								<button type="button" class="btn cancelOrderodal waves-effect waves-light" data-bs-dismiss="modal">Cancel Order</button>
+							</div>
+							<div class="col-md-6">
+								<button type="button" class="btn saveOrderModal waves-effect waves-light">Keep Order</button>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div><!-- /.modal-content -->
+				</div><!-- /.modal-content -->
+			</div>
 		</div>
 	</div>
 </form>
@@ -1104,7 +1218,7 @@ font-size: 12px;">12-06-2021 | 23:20</p>
 
 				<p style="color: #818181;font-weight: 400;font-size: 14px;">Your order will be process after you confirm this order and system will be show the information of payment.</p>
 				<div style="text-align: end;">
-					<button style="width:25%;" type="button" class="btn btn-primary waves-effect waves-light">Confirm</button>
+					<a href="<?php echo base_url('detil-payment') ?>" style="width:25%;" type="button" class="btn btn-primary waves-effect waves-light">Confirm</a>
 				</div>
 			</div>
 		</div><!-- /.modal-content -->

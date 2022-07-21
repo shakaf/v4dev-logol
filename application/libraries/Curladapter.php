@@ -51,23 +51,30 @@ class Curladapter
 
     function logolServicesGet($uri, $payloads, $token)
     {
-        if(!is_array($payloads))
+        try
         {
-            return [];
-            exit();
+            if(!is_array($payloads))
+            {
+                return [];
+                exit();
+            }
+            $response = $this->curlAdapter->to($uri)
+                ->withOption('SSL_VERIFYHOST', false)
+                ->withHeaders([
+                    'Accept' => 'application/json', 
+                    'Content-Type' => 'application/json'
+                ])
+                ->withBearer($token)
+                ->withData(json_encode($payloads, true))
+                ->WithTimeout(300)
+                ->enableDebug('/var/www/html/v4dev/logFile.txt')
+                ->get();
+            return json_decode($response, true);
         }
-        $response = $this->curlAdapter->to($uri)
-            ->withOption('SSL_VERIFYHOST', false)
-            ->withHeaders([
-                'Accept' => 'application/json', 
-                'Content-Type' => 'application/json'
-            ])
-            ->withBearer($token)
-            ->withData(json_encode($payloads, true))
-            ->WithTimeout(300)
-            ->enableDebug('/var/www/html/v4dev/logFile.txt')
-            ->get();
-        return json_decode($response, true);
+        catch(Exception $e)
+        {
+            return json_decode([],true);
+        }
     }
 
     function nleServices($uri, $payloads){
