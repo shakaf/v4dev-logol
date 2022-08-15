@@ -137,6 +137,8 @@ function getOrder(id, label, val = 1) {
                 initEDepot();
             } else if (id == "import-depot") {
                 initIDepot();
+            } else if (id == "export-port") {
+                initEPort();
             }
             initOnbehalf();
             //}

@@ -64,7 +64,7 @@
                     </td>
                     <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">POD-221144XVC_100721_LOG005.pdf</a> </td>
                     <td>
-                        <a href="<?php echo base_url('detail-etrucking') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
+                        <a href="<?php echo base_url('print-truck') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
                 </tr>
                 <tr>
                     <td style="width:5%;">
@@ -75,7 +75,7 @@
                     </td>
                     <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">POD-221144XVC_100721_LOG002.pdf</a> </td>
                     <td>
-                        <a href="<?php echo base_url('detail-etrucking') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
+                        <a href="<?php echo base_url('print-truck') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
                 </tr>
                 <tr>
                     <td style="width:5%;">
@@ -86,7 +86,7 @@
                     </td>
                     <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">POD-221144XVC_100721_LOG003.pdf</a> </td>
                     <td>
-                        <a href="<?php echo base_url('detail-etrucking') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
+                        <a href="<?php echo base_url('print-truck') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
                 </tr>
                 <tr>
                     <td style="width:5%;">
@@ -97,7 +97,7 @@
                     </td>
                     <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">POD-221144XVC_100721_LOG004.pdf</a> </td>
                     <td>
-                        <a href="<?php echo base_url('detail-etrucking') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
+                        <a href="<?php echo base_url('print-truck') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
                 </tr>
                 <tr>
                     <td style="width:5%;">
@@ -108,7 +108,7 @@
                     </td>
                     <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">POD-221144XVC_100721_LOG001.pdf</a> </td>
                     <td>
-                        <a href="<?php echo base_url('detail-etrucking') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
+                        <a href="<?php echo base_url('print-truck') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
                 </tr>
 
             </tbody>

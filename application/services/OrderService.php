@@ -79,6 +79,27 @@ class OrderService extends MY_Service
         }
     }
 
+	public function getTerminalList(){
+        $Curladapter = $this->curladapter;
+        $result = [];
+        $logolRpc = $Curladapter->logolServicesGet(CHECK_POINT_MASTER . 'port/list', array(), $this->newsession->userdata('accessToken'));
+        try
+        {
+            if($logolRpc['status'] == 1)
+            {
+                return $logolRpc['data'];
+            }
+            else
+            {
+                return [];
+            }
+        }
+        catch(Exception $e)
+        {
+            return [];
+        }
+    }
+
 	public function loadBillingEDepot(){
 		$Curladapter = $this->curladapter;
         $result = [];

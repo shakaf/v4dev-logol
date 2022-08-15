@@ -192,6 +192,9 @@ function removeBoxCont(id) {
 }
 
 var initIDepot = function () {
+    itemcheck = 0;
+    containercount = 0;
+    dtarray = {};
     var $validatorb = $("#formB").validate();
     $('#importdepot-wizard').bootstrapWizard({
         onNext: function (tab, navigation, index) {

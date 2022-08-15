@@ -16,7 +16,7 @@ class Home extends CI_Controller
     public function __construct()
     {
 		parent::__construct();
-		$this->load->service(array('CompanyProfileService', 'DashboardService'));
+		$this->load->service(array('CompanyProfileService', 'DashboardService','BillingService'));
 
     }
 
@@ -119,9 +119,13 @@ class Home extends CI_Controller
 		}
         else
         {
+			$rid = "LGMUSS".substr(hexdec(uniqid()),-4);
+			$paydata = $this->BillingService->createBillingPayment($rid);
             $arrData = [
                 'profileAttribute' => $_SESSION,
-                'isRequirement' => $this->DashboardService->isCompleteProfile()
+                'isRequirement' => $this->DashboardService->isCompleteProfile(),
+				'payData'=>$paydata,
+				"rId"=>$rid
             ];
             $this->content = $this->load->view('home/vPay', $arrData, true);
 			

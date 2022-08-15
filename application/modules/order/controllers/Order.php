@@ -7,7 +7,7 @@ class Order extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->service(array('CompanyProfileService', 'DashboardService','OnbehalfService','OrderService','OrderMgtService'));
+		$this->load->service(array('CompanyProfileService', 'DashboardService','OnbehalfService','OrderService','OrderMgtService','BillingService'));
 	}
 
 	public function index()
@@ -48,12 +48,14 @@ class Order extends CI_Controller
 					$data['arrdepot'] = $this->OrderService->getDepot();
 					$view = $this->load->view('order/vRequestExportDepot', $data, true);
 				} else if ($post == "export-port") {
-					$view = $this->load->view('order/vRequestExportPort', '', true);
+					$data['arrport'] = $this->OrderService->getTerminalList();
+					$view = $this->load->view('order/vRequestExportPort', $data, true);
 				} else if ($post == "import-depot") {
 					$data['arrdepot'] = $this->OrderService->getDepot();
 					$view = $this->load->view('order/vRequestImportDepot', $data, true);
 				} else if ($post == "import-port") {
-					$view = $this->load->view('order/vRequestImportPort', '', true);
+					$data['arrport'] = $this->OrderService->getTerminalList();
+					$view = $this->load->view('order/vRequestImportPort', $data, true);
 				}
 				$arrayResponse = [
 					'status'		=> 100,
@@ -143,7 +145,7 @@ class Order extends CI_Controller
 		} else {
 			$arrData = [
 				'profileAttribute' => $_SESSION,
-				'isRequirement' => $this->DashboardService->isCompleteProfile()
+				'isRequirement' => $this->DashboardService->isCompleteProfile(),
 			];
 			$this->content = $this->load->view('order/vPay', $arrData, true);
 

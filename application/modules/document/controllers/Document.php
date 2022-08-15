@@ -156,4 +156,42 @@ class Document extends CI_Controller
 
         }
     }
+
+    public function truckPrint()
+    {
+        if (!$this->newsession->userdata('loggedIn')) {
+            redirect(site_url('login'));
+            exit();
+        } else {
+            $this->load->library('Pdf');
+            $arrData = [
+                'profileAttribute' => $_SESSION,
+                'isRequirement' => $this->DashboardService->isCompleteProfile(),
+                // 'arrheader'    => $arrheader,
+                // 'arrdetail'    => $arrdetail
+            ];
+            $this->content = $this->load->view('document/PrintTrucking', $arrData, true);
+
+            $this->index();
+        }
+    }
+
+    public function receiptPrint()
+    {
+        if (!$this->newsession->userdata('loggedIn')) {
+            redirect(site_url('login'));
+            exit();
+        } else {
+            $this->load->library('Pdf');
+            $arrData = [
+                'profileAttribute' => $_SESSION,
+                'isRequirement' => $this->DashboardService->isCompleteProfile(),
+                // 'arrheader'    => $arrheader,
+                // 'arrdetail'    => $arrdetail
+            ];
+            $this->content = $this->load->view('document/PrintReceipt', $arrData, true);
+
+            $this->index();
+        }
+    }
 }

@@ -134,6 +134,8 @@ $route['detail-document']['GET']                        = 'document/detilDocInvo
 $route['detail-etrucking']['GET']                        = 'document/detilDocEtrucking';
 $route['print-invoice']['GET']                         = 'document/printInvoice';
 
+$route['print-truck']['GET']                         = 'document/truckPrint';
+$route['print-receipt']['GET']                         = 'document/receiptPrint';
 
 $route['set-rating']['POST']                            = 'profile/setRating';
 $route['e-gatepass']['GET']                             = 'home/getEGatepass';

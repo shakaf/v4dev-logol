@@ -22,7 +22,7 @@
                         <div class="col-lg-4">
                         </div>
                             <div class="col-lg-4">
-
+                                
                                 <div class="card">
                                     <div class="card-header bg-transparent border-bottom">
                                         <p>Back</p>

@@ -124,6 +124,10 @@ function addNewCont() {
 }
 
 var initEDepot = function () {
+    itemcheck = 0;
+    containercount = 0;
+    boxcount = 0;
+    dtarray = {};
     var $validator = $("#formA").validate();
     $('#exportdepot-wizard').bootstrapWizard({
         onNext: function (tab, navigation, index) {

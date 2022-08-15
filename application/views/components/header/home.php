@@ -31,6 +31,7 @@
     <script src="<?php echo base_url(); ?>assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/LogolOrder.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/LogolOrderEDepot.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/LogolOrderEPort.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/LogolOrderIDepot.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/LogolOrderOnbehalf.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/LogolDetailPayment.js"></script>

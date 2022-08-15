@@ -29,7 +29,7 @@
 	<div class="row">
 		<div class="col-md-2">&nbsp;</div>
 		<div class="col-md-10">
-			<div id="basic-pills-wizard" class="twitter-bs-wizard">
+			<div id="exportportwizard" class="twitter-bs-wizard">
 				<ul class="twitter-bs-wizard-nav">
 					<li class="nav-item">
 						<a href="#steps-1" class="" data-toggle="tab">&nbsp;</a>
@@ -74,11 +74,16 @@
 									<div class="col-lg-12">
 										<div class="mt-3 mt-lg-0">
 											<div class="mb-3">
-												<select class="form-select w-25" onchange="selectTerminal(this.value); return false;">
+												<select class="form-select w-25 select2" onchange="selectTerminal(this.value); return false;">
 													<option value="">Please Select Terminal</option>
-													<option value="NPCT1">NPCT1</option>
+													<!-- <option value="NPCT1">NPCT1</option>
 													<option value="JICT">JICT</option>
-													<option value="KOJA">KOJA</option>
+													<option value="KOJA">KOJA</option> -->
+													<?php if (!empty($arrport)) : ?>
+														<?php foreach ($arrport as $port) : ?>
+															<option value="<?php echo $port['TERMINAL_CODE']; ?>"><?php echo strtoupper($port['TERMINAL_CODE'])." - ".$port['TERMINAL_NAME']; ?></option>
+														<?php endforeach; ?>
+													<?php endif; ?>
 												</select>
 											</div>
 										</div>
@@ -97,102 +102,106 @@
 								</h2>
 								<div id="collapseOne1" class="accordion-collapse collapse show" aria-labelledby="headingOne1" data-bs-parent="#accordionExample1">
 									<div class="accordion-body">
-										<div class="row">
-											<div class="col-lg-8">
-												<div>
-													<div class="mb-3">
-														<label class="form-label">NPWP <span style="color: #E05252;">*</span></label>
-														<select class="form-select" name="selnpwp" data-bs-toggle="modal" id="selnpwp" data-bs-target="#viewModal" required>
-															<option>Select NPWP</option>
-														</select>
+										<form id="formEP" method="post" action="">
+											<div class="row">
+												<div class="col-lg-8">
+													<div>
+														<div class="mb-3">
+															<label class="form-label">NPWP <span style="color: #E05252;">*</span></label>
+															<select class="form-select" name="selnpwp" data-bs-toggle="modal" id="selnpwp" data-bs-target="#viewModal" required>
+																<option value="" selected disabled>Select NPWP</option>
+															</select>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<div class="row">
-											<div class="col-lg-4">
-												<div class="mt-3 mt-lg-0">
-													<div class="mb-3">
-														<label for="example-date-input" class="form-label">Delivery Order Number <span style="color: #E05252;">*</span></label>
-														<input class="form-control" type="text" placeholder="Input Here">
+											<div class="row">
+												<div class="col-lg-4">
+													<div class="mt-3 mt-lg-0">
+														<div class="mb-3">
+															<label for="example-date-input" class="form-label">Delivery Order Number <span style="color: #E05252;">*</span></label>
+															<input class="form-control donumber" name="donum" type="text" placeholder="Input Here" required>
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="mt-3 mt-lg-0">
-													<div class="mb-3">
-														<label for="example-date-input" class="form-label">Delivery Order Expiry Date <span style="color: #E05252;">*</span></label>
-														<input class="form-control" type="date" placeholder="Input Here">
+												<div class="col-lg-4">
+													<div class="mt-3 mt-lg-0">
+														<div class="mb-3">
+															<label for="example-date-input" class="form-label">Delivery Order Expiry Date <span style="color: #E05252;">*</span></label>
+															<input class="form-control" name="doexp" type="date" placeholder="Input Here" required>
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="mt-3 mt-lg-0">
-													<div class="mb-3 ">
-														<label for="example-date-input" class="form-label">Internal Ref. Number</label>
-														<input class="form-control" type="text" placeholder="Input Here">
+												<div class="col-lg-4">
+													<div class="mt-3 mt-lg-0">
+														<div class="mb-3 ">
+															<label for="example-date-input" class="form-label">Internal Ref. Number</label>
+															<input class="form-control dointrefnumber" type="text" name="intrefno" placeholder="Input Here">
 
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<hr />
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="mt-3 mt-lg-0">
-													<div class="mb-3">
-														<label for="example-date-input" class="form-label">Customs Doc. Type <span style="color: #E05252;">*</span></label>
-														<select class="form-select">
-															<option>Select Type</option>
-														</select>
+											<hr />
+											<div class="row">
+												<div class="col-lg-6">
+													<div class="mt-3 mt-lg-0">
+														<div class="mb-3">
+															<label for="example-date-input" class="form-label">Customs Doc. Type <span style="color: #E05252;">*</span></label>
+															<select id="cdt" name="cdt" class="form-select" required>
+																<option value="" selected disabled>Select Type</option>
+																<option value="NPE">NPE</option>
+															</select>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="mt-3 mt-lg-0">
-													<div class="mb-3">
-														<label for="example-date-input" class="form-label">Request Doc. Number<span style="color: #E05252;">*</span></label>
-														<input class="form-control" type="text" placeholder="Input Here">
+											<div class="row">
+												<div class="col-lg-6">
+													<div class="mt-3 mt-lg-0">
+														<div class="mb-3">
+															<label for="example-date-input" class="form-label">Request Doc. Number<span style="color: #E05252;">*</span></label>
+															<input class="form-control rqdn" type="text" name="reqdocnum" placeholder="Input Here" required>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="mt-3 mt-lg-0">
+														<div class="mb-3">
+															<label for="example-date-input" class="form-label">Request Doc. Date<span style="color: #E05252;">*</span></label>
+															<input class="form-control rqdate" type="date" name="reqdocdate" placeholder="Input Here" required>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-6">
-												<div class="mt-3 mt-lg-0">
-													<div class="mb-3">
-														<label for="example-date-input" class="form-label">Request Doc. Date<span style="color: #E05252;">*</span></label>
-														<input class="form-control" type="date" placeholder="Input Here">
-													</div>
-												</div>
-											</div>
-										</div>
 
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="mt-3 mt-lg-0">
-													<div class="mb-3">
-														<label for="example-date-input" class="form-label">Response Doc. Number<span style="color: #E05252;">*</span></label>
-														<input class="form-control" type="text" placeholder="Input Here">
+											<div class="row">
+												<div class="col-lg-6">
+													<div class="mt-3 mt-lg-0">
+														<div class="mb-3">
+															<label for="example-date-input" class="form-label">Response Doc. Number<span style="color: #E05252;">*</span></label>
+															<input class="form-control rsdn" type="text" name="resdocnum" placeholder="Input Here" required>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="mt-3 mt-lg-0">
+														<div class="mb-3">
+															<label for="example-date-input" class="form-label">Response Doc. Date<span style="color: #E05252;">*</span></label>
+															<input class="form-control rsdate" type="date" name="resdocdate" placeholder="Input Here" required>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-lg-6">
-												<div class="mt-3 mt-lg-0">
-													<div class="mb-3">
-														<label for="example-date-input" class="form-label">Response Doc. Date<span style="color: #E05252;">*</span></label>
-														<input class="form-control" type="date" placeholder="Input Here">
-													</div>
-												</div>
-											</div>
-										</div>
+										</form>
 
 										<div class="row mx-2">
 											<div class="col-sm-10">&nbsp;</div>
 											<div class="col-sm-2" style="float:right">
-												<button type="button" style="width:10em" href="javascript: void(0);" class="btn btn-primary waves-effect waves-light mb-sm-3" onClick="nextSteps();" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+											<!-- onClick="nextSteps();" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1" -->
+												<button type="button" style="width:10em" href="javascript: void(0);" class="btn btn-primary waves-effect waves-light mb-sm-3" onclick="toggleEP(event);">
 													Continue <i class="bx bx-chevron-right ms-1"></i>
 												</button>
 											</div>
@@ -236,7 +245,63 @@
 											<!-- ====show all ==== -->
 											<div class="card-body tab-pane fade show active" id="pills-Showall" role="tabpanel" aria-labelledby="Showall">
 												<div class="row">
-													<div class="col-md-6">
+													<?php
+													for ($i=0; $i < 4; $i++) { 
+														$id=uniqid();
+														?>
+														<div class="col-md-6" id="dtc<?= $id ?>">
+															<div class="card">
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-md-8">
+																			<div class="d-flex flex wrap">
+																				<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+																					<g filter="url(#filter0_d_1338_38064)">
+																						<path d="M6 6H26V18H6V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																						<path d="M10 10L10 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																						<path d="M14 10L14 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																						<path d="M18 10L18 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																						<path d="M22 10L22 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+																					</g>
+																					<defs>
+																						<filter id="filter0_d_1338_38064" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+																							<feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+																							<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+																							<feOffset dy="4"></feOffset>
+																							<feGaussianBlur stdDeviation="2"></feGaussianBlur>
+																							<feComposite in2="hardAlpha" operator="out"></feComposite>
+																							<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+																							<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1338_38064"></feBlend>
+																							<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1338_38064" result="shape"></feBlend>
+																						</filter>
+																					</defs>
+																				</svg>
+																				<h4 class="card-title card-gp-title" style="color:#002985;">
+																					<span id="size<?= $id; ?>">20</span>’ <span id="type<?= $id; ?>">GP</span> - <span id="idc<?= $id ?>">EGHU3826956</span>
+																				</h4>
+																			</div>
+																		</div>
+																		<div class="col-md-4" style="text-align:end;">
+																			<input type="checkbox" class="chk_custom checkitem" value="<?= $id; ?>">
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-6">
+																			<label class="label" style="color:#0E0E2C;">Yard Opening Time</label>
+																			<p class="l_val" id="open<?= $id; ?>">12-06-2021 | 22:45</p>
+																		</div>
+																		<div class="col-md-6">
+																			<label class="label" style="color:#0E0E2C;">Yard Closing Time</label>
+																			<p class="l_val" id="close<?= $id; ?>">12-06-2021 | 23:20</p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<?php
+													}
+													?>
+													<!-- <div class="col-md-6">
 														<div class="card">
 															<div class="card-body">
 																<div class="row">
@@ -431,7 +496,7 @@
 																</div>
 															</div>
 														</div>
-													</div>
+													</div> -->
 												</div>
 											</div>
 
@@ -469,7 +534,8 @@
 					</div>
 					<div class="tab-pane" id="steps-2">
 						<div class="d-flex flex-wrap">
-							<span style="cursor:pointer" onclick="history.back()">
+							<!-- history.back() -->
+							<span style="cursor:pointer" onclick="backtoZeroEP();">
 								<svg width=" 24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M5 12H19" stroke="#4A4A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 									<path d="M5 12L9 16" stroke="#4A4A68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -505,21 +571,21 @@
 											</div>
 											<div class="col-md-9 col-sm-9">
 												<label class="t-title">NPWP</label>
-												<p class="t-desc">08.178.554.2-123.321 - PT. TEGUH ABADI JAYA</p>
+												<p class="t-desc gi-npwp">08.178.554.2-123.321 - PT. TEGUH ABADI JAYA</p>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-3 col-sm-3">
 												<label class="t-title">DO Number</label>
-												<p class="t-desc">DO_11233RBG_22</p>
+												<p class="t-desc gi-donumber">DO_11233RBG_22</p>
 											</div>
 											<div class="col-md-3 col-sm-3">
 												<label class="t-title">DO Date</label>
-												<p class="t-desc">22/04/2022</p>
+												<p class="t-desc gi-dodate">22/04/2022</p>
 											</div>
 											<div class="col-md-3 col-sm-3">
 												<label class="t-title">Internal Ref. Number</label>
-												<p class="t-desc">MRS123456</p>
+												<p class="t-desc gi-intrefnumber">MRS123456</p>
 											</div>
 
 										</div>
@@ -554,26 +620,27 @@
 												<div class="row">
 													<div class="col-md-4 col-sm-4">
 														<label class="t-title description">Customs Doc. Type</label>
-														<p class="t-desc">NPE</p>
+														<p class="t-desc gi-cdt">NPE</p>
 													</div>
 													<div class="col-md-4 col-sm-4">
 														<label class="t-title">Request Doc. Number</label>
-														<p class="t-desc">NPE_1188115</p>
+														<p class="t-desc gi-rqdn">NPE_1188115</p>
 													</div>
 													<div class="col-md-4 col-sm-4">
 														<label class="t-title description">Request Doc. Date</label>
-														<p class="t-desc">21/04/2022</p>
+														<p class="t-desc gi-rqdate">21/04/2022</p>
 													</div>
 													<div class="col-md-4 col-sm-4">
 														<label class="t-title description">Response Doc. Number</label>
-														<p class="t-desc">PEB_11KUI899</p>
+														<p class="t-desc gi-rsdn">PEB_11KUI899</p>
 													</div>
 													<div class="col-md-4 col-sm-4">
 														<label class="t-title description">Response Doc. Date</label>
-														<p class="t-desc">21/04/2022</p>
+														<p class="t-desc gi-rsdate">21/04/2022</p>
 													</div>
-													<div class="row">
-														<div class="col-md-6">
+													<div class="row" id="orderlist">
+
+														<!-- <div class="col-md-6">
 															<div class="card">
 																<div class="card-body">
 																	<div class="d-flex flex-wrap">
@@ -720,7 +787,7 @@
 																	</div>
 																</div>
 															</div>
-														</div>
+														</div> -->
 
 													</div>
 												</div>
@@ -844,112 +911,6 @@
 		</div>
 	</div>
 </div>
-<script src="<?php echo base_url(); ?>assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-<script>
-	function nextSteps() {
-		$("#done").show();
-	}
-
-	function ChangeText(oFileInput, sTargetID) {
-		document.getElementById(sTargetID).value = oFileInput.value;
-	}
-
-	//select all
-	function chkall(ele) {
-		var checkboxes = document.getElementsByTagName('input');
-		if (ele.checked) {
-			for (var i = 0; i < checkboxes.length; i++) {
-				if (checkboxes[i].type == 'checkbox') {
-					checkboxes[i].checked = true;
-				}
-			}
-		} else {
-			for (var i = 0; i < checkboxes.length; i++) {
-				if (checkboxes[i].type == 'checkbox') {
-					checkboxes[i].checked = false;
-				}
-			}
-		}
-	}
-
-	function selectTerminal(id) {
-		if (id != "") {
-			$('#accordionExample1').fadeIn(300);
-			$('#accordionExample').fadeIn(300);
-			//$('#basic-pills-wizard').fadeIn(300);
-		} else {
-			$('#accordionExample1').fadeOut(300);
-			$('#accordionExample').fadeOut(300);
-			//$('#basic-pills-wizard').fadeOut(300);
-		}
-	}
-
-	function changeCont(obj) {
-		if (obj.value == "default") {
-			$(obj).parent().find("label").text("")
-			$(obj).parent().find("select").css('width', '100%')
-		} else {
-			let split = obj.value.split("-");
-			$(obj).parent().find("label").text(split[1].trim())
-			$(obj).parent().find("select").css('width', '95px')
-		}
-	}
-
-	function counting(act, obj) {
-		let vals = parseInt($(obj).parent().find("label").text())
-
-		if (act == "min") {
-			if (vals == 0) {
-				$(obj).parent().find("label").text("0")
-			} else {
-				$(obj).parent().find("label").text((vals - 1));
-			}
-		} else {
-
-			$(obj).parent().find("label").text((vals + 1));
-		}
-	}
-
-	$(document).ready(function() {
-		$('#basic-pills-wizard').bootstrapWizard();
-	});
-
-	$("#checkall").change(function() {
-		$(".checkitem").prop("checked", $(this).prop("checked"))
-	})
-	$(".checkitem").change(function() {
-		if ($(this).prop("checked") == false) {
-			$("#checkall").prop("checked", false)
-		}
-		if ($(".checkitem:checked").length == $(".checkitem").length) {
-			$("#checkall").prop("checked", true)
-		}
-	})
-
-	$("#checkallList").change(function() {
-		$(".checkitemlist").prop("checked", $(this).prop("checked"))
-	})
-	$(".checkitemlist").change(function() {
-		if ($(this).prop("checked") == false) {
-			$("#checkallList").prop("checked", false)
-		}
-		if ($(".checkitemlist:checked").length == $(".checkitemlist").length) {
-			$("#checkallList").prop("checked", true)
-		}
-	})
-
-	$("#checkall2").change(function() {
-		$(".checkitemlist2").prop("checked", $(this).prop("checked"))
-	})
-	$(".checkitemlist2").change(function() {
-		if ($(this).prop("checked") == false) {
-			$("#checkall2").prop("checked", false)
-		}
-		if ($(".checkitemlist2:checked").length == $(".checkitemlist2").length) {
-			$("#checkall2").prop("checked", true)
-		}
-	})
-</script>
 
 <!-- modal cancel order -->
 <form action="" method="post">
@@ -978,10 +939,11 @@
 						<p style="color: #818181;font-weight: 400;font-size: 14px;padding: 16px 43px;">Do you want to cancel this order? Orders will not be processed</p>
 						<div class="row">
 							<div class="col-md-6">
-								<button type="button" class="btn cancelOrderodal waves-effect waves-light" data-bs-dismiss="modal">Cancel Order</button>
+								<!-- <button type="button" class="btn cancelOrderodal waves-effect waves-light" data-bs-dismiss="modal">Cancel Order</button> -->
+								<a href="<?php echo site_url("my-order"); ?>" class="btn cancelOrderodal waves-effect waves-light">Cancel Order</a>
 							</div>
 							<div class="col-md-6">
-								<button type="button" class="btn saveOrderModal waves-effect waves-light">Keep Order</button>
+								<button type="button" class="btn saveOrderModal waves-effect waves-light" data-bs-dismiss="modal">Keep Order</button>
 							</div>
 						</div>
 					</div>

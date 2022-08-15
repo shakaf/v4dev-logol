@@ -62,9 +62,9 @@
                             <label class="form-check-label"></label>
                         </div>
                     </td>
-                    <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">ESupportDoc1.pdf</a> </td>
+                    <td style="width: 70%;"><a href="<?php echo base_url('print-receipt') ?>" class="text-dark fw-medium">ESupportDoc1.pdf</a> </td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</button>
+                        <a href="<?php echo base_url('print-receipt') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
                 </tr>
                 <tr>
                     <td style="width:5%;">
@@ -73,9 +73,9 @@
                             <label class="form-check-label"></label>
                         </div>
                     </td>
-                    <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">ESupportDoc2.pdf</a> </td>
+                    <td style="width: 70%;"><a href="<?php echo base_url('print-receipt') ?>" class="text-dark fw-medium">ESupportDoc2.pdf</a> </td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</button>
+                        <a href="<?php echo base_url('print-receipt') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</button>
                 </tr>
                 <tr>
                     <td style="width:5%;">
@@ -84,9 +84,9 @@
                             <label class="form-check-label"></label>
                         </div>
                     </td>
-                    <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">ESupportDoc3.pdf</a> </td>
+                    <td style="width: 70%;"><a href="<?php echo base_url('print-receipt') ?>" class="text-dark fw-medium">ESupportDoc3.pdf</a> </td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</button>
+                        <a href="<?php echo base_url('print-receipt') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</button>
                 </tr>
                 <tr>
                     <td style="width:5%;">
@@ -95,9 +95,9 @@
                             <label class="form-check-label"></label>
                         </div>
                     </td>
-                    <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">ESupportDoc4.pdf</a> </td>
+                    <td style="width: 70%;"><a href="<?php echo base_url('print-receipt') ?>" class="text-dark fw-medium">ESupportDoc4.pdf</a> </td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</button>
+                        <a href="<?php echo base_url('print-receipt') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
                 </tr>
                 <tr>
                     <td style="width:5%;">
@@ -106,9 +106,9 @@
                             <label class="form-check-label"></label>
                         </div>
                     </td>
-                    <td style="width: 70%;"><a href="javascript: void(0);" class="text-dark fw-medium">ESupportDoc5.pdf</a> </td>
+                    <td style="width: 70%;"><a href="<?php echo base_url('print-receipt') ?>" class="text-dark fw-medium">ESupportDoc5.pdf</a> </td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</button>
+                        <a href="<?php echo base_url('print-receipt') ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style=" border: 1px solid #405EA3;">View</a>
                 </tr>
             </tbody>
         </table>
