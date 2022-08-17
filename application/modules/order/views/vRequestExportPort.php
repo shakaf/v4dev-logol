@@ -42,6 +42,7 @@
 					<div class="tab-pane" id="steps-1">
 						<div class="navbar">
 							<span><a href="#">My Order</a> > Order Form</span>
+							<input type="hidden" id="company_id" name="company_id" value="<?= $profile['COMPANY_INFO'][0]['COMPANY_ID'] ?>" />
 						</div>
 						<div class="card mt-3">
 							<div class="card-body">
@@ -111,6 +112,8 @@
 															<select class="form-select" name="selnpwp" data-bs-toggle="modal" id="selnpwp" data-bs-target="#viewModal" required>
 																<option value="" selected disabled>Select NPWP</option>
 															</select>
+															<input type="hidden" id="npwpcust" name="npwpcust" value="" />
+															<input type="hidden" id="namecust" name="namecust" value="" />
 														</div>
 													</div>
 												</div>
@@ -121,7 +124,7 @@
 													<div class="mt-3 mt-lg-0">
 														<div class="mb-3">
 															<label for="example-date-input" class="form-label">Delivery Order Number <span style="color: #E05252;">*</span></label>
-															<input class="form-control donumber" name="donum" type="text" placeholder="Input Here" required>
+															<input class="form-control donumber" name="donum" type="text" placeholder="Input Here" value="080100031445" required>
 														</div>
 													</div>
 												</div>
@@ -129,7 +132,7 @@
 													<div class="mt-3 mt-lg-0">
 														<div class="mb-3">
 															<label for="example-date-input" class="form-label">Delivery Order Expiry Date <span style="color: #E05252;">*</span></label>
-															<input class="form-control" name="doexp" type="date" placeholder="Input Here" required>
+															<input class="form-control doexp" name="doexp" type="date" placeholder="Input Here" value="2020-11-20" required>
 														</div>
 													</div>
 												</div>
@@ -163,7 +166,7 @@
 													<div class="mt-3 mt-lg-0">
 														<div class="mb-3">
 															<label for="example-date-input" class="form-label">Request Doc. Number<span style="color: #E05252;">*</span></label>
-															<input class="form-control rqdn" type="text" name="reqdocnum" placeholder="Input Here" required>
+															<input class="form-control rqdn" type="text" name="reqdocnum" placeholder="Input Here" value="054296" required>
 														</div>
 													</div>
 												</div>
@@ -171,7 +174,7 @@
 													<div class="mt-3 mt-lg-0">
 														<div class="mb-3">
 															<label for="example-date-input" class="form-label">Request Doc. Date<span style="color: #E05252;">*</span></label>
-															<input class="form-control rqdate" type="date" name="reqdocdate" placeholder="Input Here" required>
+															<input class="form-control rqdate" type="date" name="reqdocdate" placeholder="Input Here" value="2021-01-23" required>
 														</div>
 													</div>
 												</div>
@@ -182,7 +185,7 @@
 													<div class="mt-3 mt-lg-0">
 														<div class="mb-3">
 															<label for="example-date-input" class="form-label">Response Doc. Number<span style="color: #E05252;">*</span></label>
-															<input class="form-control rsdn" type="text" name="resdocnum" placeholder="Input Here" required>
+															<input class="form-control rsdn" type="text" name="resdocnum" placeholder="Input Here" value="054635/KPU.01/2021" required>
 														</div>
 													</div>
 												</div>
@@ -190,7 +193,7 @@
 													<div class="mt-3 mt-lg-0">
 														<div class="mb-3">
 															<label for="example-date-input" class="form-label">Response Doc. Date<span style="color: #E05252;">*</span></label>
-															<input class="form-control rsdate" type="date" name="resdocdate" placeholder="Input Here" required>
+															<input class="form-control rsdate" type="date" name="resdocdate" placeholder="Input Here" value="2021-01-23" required>
 														</div>
 													</div>
 												</div>
@@ -234,7 +237,7 @@
 													</li>
 												</ul>
 											</div>
-											<div class="col-md-6" style="text-align: end;">
+											<div class="col-md-6" id="sAllCB" style="text-align: end;">
 												<span>
 													<label style="color: #4A4A68;font-weight: 700;font-size: 12px;line-height: 12px;vertical-align: middle; margin-right:10px;">Select All</label>
 													<input type="checkbox" id="checkall" class="chk_custom">
@@ -244,7 +247,10 @@
 										<div class="tab-content" id="pills-tabContent">
 											<!-- ====show all ==== -->
 											<div class="card-body tab-pane fade show active" id="pills-Showall" role="tabpanel" aria-labelledby="Showall">
-												<div class="row">
+												<input type="hidden" name="gtid" class="gtid" />
+												<input type="hidden" name="ohi" class="ohi" />
+													
+												<div class="row" id="listcontainer">
 													<?php
 													for ($i=0; $i < 4; $i++) { 
 														$id=uniqid();
@@ -502,15 +508,15 @@
 
 											<!-- ===exp 20'==== -->
 											<div class="card-body tab-pane fade" id="pills20" role="tabpanel" aria-labelledby="pills20tab">
-												<div class="row">
-													content 2
+												<div class="row" id="listcontainer20">
+													-
 												</div>
 											</div>
 
 											<!-- ===exp 40'==== -->
 											<div class="card-body tab-pane fade" id="pills40" role="tabpanel" aria-labelledby="pills40tab">
-												<div class="row">
-													content 3 disini
+												<div class="row" id="listcontainer40">
+													-
 												</div>
 											</div>
 
@@ -519,13 +525,13 @@
 									<div class="row mx-2 mb-2">
 										<div class="col-lg-10">&nbsp;</div>
 										<div class="col-lg-2">
-											<ul class="pager wizard twitter-bs-wizard-pager-link">
-												<li class="next">
-													<button type="button" style="width:10em" href="javascript: void(0);" class="btn btn-primary waves-effect waves-light mb-sm-3">
+											<!-- <ul class="pager wizard twitter-bs-wizard-pager-link">
+												<li class="next"> -->
+													<button type="button" id="btncont" style="width:10em" onclick="saveCont()" href="javascript: void(0);" class="btn btn-primary waves-effect waves-light mb-sm-3">
 														Continue <i class="bx bx-chevron-right ms-1"></i>
 													</button>
-												</li>
-											</ul>
+												<!-- </li>
+											</ul> -->
 										</div>
 									</div>
 								</div>
@@ -971,7 +977,8 @@
 
 					<p style="color: #818181;font-weight: 400;font-size: 14px;">Your order will be process after you confirm this order and system will be show the information of payment.</p>
 					<div style="text-align: end;">
-						<a href="<?php echo base_url('detil-payment') ?>" style="width:25%;" type="button" class="btn btn-primary waves-effect waves-light">Confirm</a>
+						<!-- <?php echo base_url('detil-payment') ?> -->
+						<a href="javascript:;" onclick="bookingnowEPort();"  style="width:25%;" type="button" class="btn btn-primary waves-effect waves-light">Confirm</a>
 					</div>
 				</div>
 			</div><!-- /.modal-content -->

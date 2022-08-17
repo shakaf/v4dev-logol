@@ -266,70 +266,197 @@
                     <h4 class="card-title">Your Order Listing</h4>
                     <p class="description">Please select which order you will process into the next step (payment).</p>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">E-Depot</h4>
-                        <p class="description">Depot Order Details</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label class="label">Depot</label>
-                                <p class="l_val"><?= $this->session->userdata("depot"); ?></p>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="label">Shipping Line</label>
-                                <p class="l_val"><?= $this->session->userdata("SHIPPING_NAME"); ?></p>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="label">Container Grade</label>
-                                <p class="l_val"><?= $this->session->userdata("CONTAINER_GRADE"); ?></p>
+                <?php if($this->session->userdata("service")=="Depot"){ ?>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">E-Depot</h4>
+                            <p class="description">Depot Order Details</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="label">Depot</label>
+                                    <p class="l_val"><?= $this->session->userdata("depot"); ?></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="label">Shipping Line</label>
+                                    <p class="l_val"><?= $this->session->userdata("SHIPPING_NAME"); ?></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="label">Container Grade</label>
+                                    <p class="l_val"><?= $this->session->userdata("CONTAINER_GRADE"); ?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <?php
-                            $list = json_decode($this->session->userdata("CONTAINER_LIST"));
-                            //print_r($list);
-                            foreach ($list as $key => $value) {
-                                $img = "";
-                                if ($value->CONTAINER_SIZE == '20 Feet') {
-                                    $img = base_url().'assets/images/icon/cont-20-dv.png';
-                                } else if ($value->CONTAINER_SIZE == '40 Feet') {
-                                    $img = base_url().'assets/images/icon/cont-40-dv.png';
-                                } else {
-                                    $img = base_url().'assets/images/icon/cont-40-hc.png';
-                                }
-                                ?>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <table>
-                                                <tr>
-                                                    <td rowspan="2"><img src="<?php echo $img; ?>" /></td>
-                                                    <td style="width:100%;">
-                                                        <label style="margin-left:8%;font-weight:bold;"><?= $value->CONTAINER_SIZE ?></label>
-                                                        <p class="description" style="margin-left:8%;"><?= $value->CONTAINER_TYPE?></p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label style="margin-left:8%;font-weight:bold;"><?= $this->session->userdata("type")=="Export"? "x".$value->QTY:$value->CONTAINER_NUMBER ?></label>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                        <div class="card-body">
+                            <div class="row">
+                                <?php
+                                $list = json_decode($this->session->userdata("CONTAINER_LIST"));
+                                //print_r($list);
+                                foreach ($list as $key => $value) {
+                                    $img = "";
+                                    if ($value->CONTAINER_SIZE == '20 Feet') {
+                                        $img = base_url().'assets/images/icon/cont-20-dv.png';
+                                    } else if ($value->CONTAINER_SIZE == '40 Feet') {
+                                        $img = base_url().'assets/images/icon/cont-40-dv.png';
+                                    } else {
+                                        $img = base_url().'assets/images/icon/cont-40-hc.png';
+                                    }
+                                    ?>
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <table>
+                                                    <tr>
+                                                        <td rowspan="2"><img src="<?php echo $img; ?>" /></td>
+                                                        <td style="width:100%;">
+                                                            <label style="margin-left:8%;font-weight:bold;"><?= $value->CONTAINER_SIZE ?></label>
+                                                            <p class="description" style="margin-left:8%;"><?= $value->CONTAINER_TYPE?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label style="margin-left:8%;font-weight:bold;"><?= $this->session->userdata("type")=="Export"? "x".$value->QTY:$value->CONTAINER_NUMBER ?></label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                            
+                                    <?php
+                                }
+                                ?>
+                                
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php 
+                }
+                if($this->session->userdata("service")=="Eport"){
+                    ?>
+                    <div class="card">
+                        <div class="card-header bg-transparent border-bottom">
+                            <h6>E-Port</h6>
+                            <p class="description">Port Order Detail</p>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4">
+                                    <label class="t-title description">Customs Doc. Type</label>
+                                    <p class="t-desc gi-cdt"><?= $this->session->userdata("do_cdt") ?></p>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <label class="t-title">Request Doc. Number</label>
+                                    <p class="t-desc gi-rqdn"><?= $this->session->userdata("do_rqdn") ?></p>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <label class="t-title description">Request Doc. Date</label>
+                                    <p class="t-desc gi-rqdate"><?= $this->session->userdata("do_rqdate") ?></p>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <label class="t-title description">Response Doc. Number</label>
+                                    <p class="t-desc gi-rsdn"><?= $this->session->userdata("do_rsdn") ?></p>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <label class="t-title description">Response Doc. Date</label>
+                                    <p class="t-desc gi-rsdate"><?= $this->session->userdata("do_rsddate") ?></p>
+                                </div>
+                                <div class="row" id="orderlist">
+                                <?php
+                                $list = json_decode($this->session->userdata("CONTAINER_LIST"));
+                                //print_r($list);
+                                foreach ($list as $key => $value) {
+                                    
+                                    ?>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-wrap">
+                                                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_2621_103660)">
+                                                            <path d="M2.5 6H22.5V18H2.5V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M6.5 10L6.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M10.5 10L10.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M14.5 10L14.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M18.5 10L18.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_2621_103660">
+                                                                <rect width="24" height="24" fill="white" transform="translate(0.5)" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+
+                                                    <h4 class="card-title card-gp-title" style="color:#002985; margin-left:10px">
+                                                        <?= $value->CONTAINER_SIZE ?>’ <?= $value->CONTAINER_TYPE ?> - <?= $value->CONTAINER_NUMBER ?>
+                                                    </h4>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label class="label" style="font-weight: 700; font-size: 10px;color: #0E0E2C;">Yard Opening Time</label>
+                                                        <p class="l_val" style="font-weight: 400; font-size: 12px;"><?= $value->yot ?></p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="label" style="font-weight: 700; font-size: 10px;color: #0E0E2C;">Yard Closing Time</label>
+                                                        <p class="l_val" style="font-weight: 400; font-size: 12px;"><?= $value->yct ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <?php
+                                }
+                                ?>
+                                    <!-- <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-wrap">
+                                                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_2621_103660)">
+                                                            <path d="M2.5 6H22.5V18H2.5V6Z" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M6.5 10L6.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M10.5 10L10.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M14.5 10L14.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path d="M18.5 10L18.5 14" stroke="#002985" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_2621_103660">
+                                                                <rect width="24" height="24" fill="white" transform="translate(0.5)" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+
+                                                    <h4 class="card-title card-gp-title" style="color:#002985; margin-left:10px">
+                                                        20’ GP - EGHU3826956
+                                                    </h4>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label class="label" style="font-weight: 700; font-size: 10px;color: #0E0E2C;">Yard Opening Time</label>
+                                                        <p class="l_val" style="font-weight: 400; font-size: 12px;">12-06-2021 | 22:45</p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="label" style="font-weight: 700; font-size: 10px;color: #0E0E2C;">Yard Closing Time</label>
+                                                        <p class="l_val" style="font-weight: 400; font-size: 12px;">12-06-2021 | 23:20</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                } 
+                ?>
             </div>
             <div class="col-md-4">
 

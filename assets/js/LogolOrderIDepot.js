@@ -107,7 +107,7 @@ function SaveNewCont() {
         $('#list-contDetil').append('<div class="col-lg-4" id="contDetil' + id + '">\
             <div class="card">\
                 <div class="alert-dismissible fade show">\
-                    <button type="button" class="btn-close" onclick="removeContainer(\''+ id + '\')"></button>\
+                    <button type="button" class="btn-close" onclick="removeContainerI(\''+ id + '\')"></button>\
                 </div>\
                 <div class="card-body">\
                     <table>\
@@ -159,7 +159,7 @@ function nextStepsb() {
     }
 }
 
-function removeContainer(id) {
+function removeContainerI(id) {
     containercount--;
     if (id != "boxc1") {
         var elementb = document.getElementById(id);
@@ -333,6 +333,7 @@ var bookingNowi = function () {
     console.log(depo);
     console.log(sl);
     console.log(...dataf);
+    $(".v4-loading").show();
     $.ajax({
         type: "POST",
         url: base_url + "order-idepot",
@@ -348,6 +349,7 @@ var bookingNowi = function () {
             console.log("complete");
         },
         success: function (data) {
+            $(".v4-loading").hide();
             console.log("success");
             console.log(data);
             if (data.data) {

@@ -58,16 +58,16 @@
 						$pics = array("bni","bca","bri");
 						foreach ($bank as $key => $vbank) {
 							$img = in_array(strtolower($vbank['bank_code']),$pics)?strtolower($vbank['bank_code']): "";
-							$imgurl="";
-							if($img!=""){
+							//$imgurl="";
+							//if($img!=""){
 								$imgurl = '<img src="assets/images/icon/bank-'.strtolower($vbank['bank_code']).'.png" />';
-							}
+							//}
 							?>
 							<div class="row">
 								<div class="col-md-10 cold-sm-10">
 									<a href="<?php echo site_url("payment-va/".strtolower($vbank['bank_code'])) ?>" class="btn btn-link waves-effect">
 										<span style="margin-right: 1em;">
-											
+										<?= $imgurl ?>
 										</span><?= $vbank['bank_code']." ".$vbank['bank_branch'] ?>
 									</a>
 								</div>

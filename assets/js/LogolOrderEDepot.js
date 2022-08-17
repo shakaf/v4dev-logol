@@ -58,6 +58,8 @@ function counting(act, obj, id) {
     var selbox = $("#selbox" + id + " option:selected").val();
     var selboxtext = $("#selbox" + id + " option:selected").text();
     var selboxv = $("#selbox" + id + " option:selected").val();
+    console.log("selbox");
+    console.log(selbox);
     let split = selboxtext.split("-");
     if (selbox != "") {
         if (act == "min") {
@@ -76,23 +78,35 @@ function counting(act, obj, id) {
 }
 
 function removeContainer(idc) {
-    const element = document.getElementById("contDetil" + idc);
-    element.remove();
-    delete dtarray[idc];
+    console.log("remove " + idc);
     containercount--;
     boxcount--;
+
+    delete dtarray[idc];
+
+    var numItems = $('.conted').length;
+    if (numItems == 0) {
+        dtarray = {};
+
+
+    }
+    const element = document.getElementById("contDetil" + idc);
+    element.remove();
+    console.log("lengta " + dtarray.length);
 }
 
 function addNewCont() {
     containercount++;
     var id = makeid(5);
-    /* alert('add new'); */
-    $('#list-cont').append('<div class="col-md-4" id="contDetil' + id + '">\
-        <div class="alert-dismissible fade show">\
+    /* alert('add new');
+    <div class="alert-dismissiblex fadex showx">\
             <button type="button" onclick="removeContainer(\''+ id + '\')" class="btn-close" ></button>\
         </div>\
+    */
+    $('#list-cont').append('<div class="col-md-4 conted" id="contDetil' + id + '">\
         <div class="card">\
             <div class="card-body">\
+                <button type="button" onclick="removeContainer(\''+ id + '\')" class="btn-close float-end" ></button>\
                 <table>\
                     <tr>\
                         <td rowspan="2"><img src="'+ base_url + 'assets/images/icon/cont-null.png" /></td>\
@@ -137,15 +151,18 @@ var initEDepot = function () {
                     break;
                 case 1:
                     var $valid = $("#formA").valid();
-                    /* console.log("onNext");
+                    console.log("onNext");
                     console.log($valid);
                     console.log(containercount);
-                    console.log(boxcount); */
+                    console.log(boxcount);
                     if (!$valid) {
                         $validator.focusInvalid();
                         return false;
                     }
-                    if (containercount == 0 || containercount != boxcount) {
+                    if (containercount == 0) {
+                        return false;
+                    }
+                    if (boxcount == 0) {
                         return false;
                     }
                     $(".gi-npwp").html($("#selnpwp option:selected").text());
@@ -296,6 +313,7 @@ var bookingNow = function () {
     console.log(depo);
     console.log(sl);
     console.log(...dataf); */
+    $(".v4-loading").show();
     $.ajax({
         type: "POST",
         url: base_url + "order-edepot",
@@ -312,6 +330,7 @@ var bookingNow = function () {
 
         },
         success: function (data) {
+            $(".v4-loading").hide();
             if (data.data) {
                 var code = data.data.status.code;
                 if (code == 200 || code == 201) {

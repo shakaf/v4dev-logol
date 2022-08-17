@@ -7,7 +7,7 @@ class Order extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->service(array('CompanyProfileService', 'DashboardService','OnbehalfService','OrderService','OrderMgtService','BillingService'));
+		$this->load->service(array('CompanyProfileService', 'DashboardService','OnbehalfService','OrderService','OrderMgtService','BillingService','OrderEPort'));
 	}
 
 	public function index()
@@ -573,6 +573,189 @@ class Order extends CI_Controller
 			else
 			{
 				$response = $this->OrderService->orderRequestIDepot();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+	public function setCallBackEPortGR()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OrderEPort->verifyEPort();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+
+	public function setCallBackEPortreqContainer()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OrderEPort->reqContainer();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+
+	public function setCallBackEPortBookingNow()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->OrderEPort->OrderRequest();
+				echo json_encode($response);
+			}
+		}
+		catch(Exception $e)
+		{
+			$response = [
+				'header' => [
+					'__version' => [
+						'number' => __VESION_APP,
+						'process_time' => '',
+						'generated' => date("Y-m-d H:i:s")
+					],
+					'error' => FALSE,
+					'message' => 'Request not allowedy'
+				],
+				'data' => []
+			];
+			echo json_encode($response);
+			die();
+		}
+	}
+
+	public function getCallBackdoPayment()
+	{
+		try
+		{
+			if(strtolower($_SERVER['REQUEST_METHOD']) != "post")
+			{
+				$response = [
+					'header' => [
+						'__version' => [
+							'number' => __VESION_APP,
+							'process_time' => '',
+							'generated' => date("Y-m-d H:i:s")
+						],
+						'error' => FALSE,
+						'message' => 'Request not allowedx'
+					],
+					'data' => []
+				];
+				echo json_encode($response);
+				die();
+			}
+			else
+			{
+				$response = $this->BillingService->doPayment();
 				echo json_encode($response);
 			}
 		}
