@@ -259,6 +259,7 @@ class OrderService extends MY_Service
             {
 				$session = $payloads;
 				$session['type']="Export";
+				$session['service']="Depot";
 				$session['CONTAINER_LIST']=json_encode($list);
 				$session['depot']=$_POST['depot'];
 				$session['npwp']=$_POST['npwp'];
@@ -291,6 +292,7 @@ class OrderService extends MY_Service
             {	
 				$session = $payloads;
 				$session['type']="Export";
+				$session['service']="Depot";
 				$session['CONTAINER_LIST']=json_encode($list);
 				$session['depot']=$_POST['depot'];
 				$session['npwp']=$_POST['npwp'];
@@ -398,6 +400,7 @@ class OrderService extends MY_Service
             {
 				$session = $payloads;
 				$session['type']="Import";
+				$session['service']="Depot";
 				$session['CONTAINER_LIST']=json_encode($list);
 				$session['depot']=$_POST['depot'];
 				$session['npwp']=$_POST['npwp'];
@@ -430,6 +433,7 @@ class OrderService extends MY_Service
             {	
 				$session = $payloads;
 				$session['type']="Import";
+				$session['service']="Depot";
 				$session['CONTAINER_LIST']=json_encode($list);
 				$session['depot']=$_POST['depot'];
 				$session['npwp']=$_POST['npwp'];
@@ -669,4 +673,5 @@ class OrderService extends MY_Service
 			exit();
 		}
     }
+	
 }

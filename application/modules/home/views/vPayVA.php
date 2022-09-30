@@ -88,7 +88,8 @@
 
                     </div>
                     <div class="card-header bg-transparent border-top">
-                        <a href="<?= site_url('payment-detail') ?>" class="btn btn-info " style="width:100%; margin-bottom:10px">Pay</a>
+                        <!-- <?= site_url('payment-detail') ?> -->
+                        <a href="javascript:;" onclick="createPay('<?= strtoupper($bank); ?>')" class="btn btn-info " style="width:100%; margin-bottom:10px">Pay</a>
                     </div>
                 </div>
             </div>

@@ -114,8 +114,58 @@ function showPage() {
 function thousandSep(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
 }
-    /* setTimeout(function() {
+/* setTimeout(function() {
 //After you load data
 document.querySelector('#loader').className += ' ' + 'hide';
 document.getElementById("myDiv").style.display = "show";
 }, 3000) */
+
+var createPay = function (bank) {
+    var dataf = new FormData();
+    dataf.append("csrf_v4kalibaru", $('meta[name="csrf_v4kalibaru"]').attr('content'));
+    dataf.append("bank_code", bank);
+    console.log("dataf");
+    console.log(...dataf);
+    //$(".v4-loading").show();
+    $.ajax({
+        type: "POST",
+        url: base_url + "create-payment",
+        data: dataf,
+        cache: false,
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        beforeSend: function () {
+
+        },
+        complete: function () {
+
+
+        },
+        success: function (data) {
+            console.log(data);
+            $(".v4-loading").hide();
+            var result = data.data.collection;
+            var msg = "status: " + result.status + "\nmessage: " + result.message + "\ndata : " + result.data + ""
+            alert(msg);
+            setTimeout(() => {
+                window.location = base_url + "payment-detail";
+            }, 1000);
+            /* if (data.data) {
+                var code = data.data.status.code;
+                if (code == 200 || code == 201) {
+                    //window.location = base_url + "payment-detail";
+                } else {
+                    alert(data);
+                }
+            } else {
+                alert(data);
+            } */
+
+        },
+        error: function (data, status, e) {
+
+
+        }
+    });
+}

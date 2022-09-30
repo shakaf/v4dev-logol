@@ -117,6 +117,10 @@ $route['onbehalf-edit']['POST']                          = 'order/setCallBackEdi
 $route['onbehalf-delete']['POST']                           = 'order/setCallBackDelOnbehalf';
 $route['order-edepot']['POST']                           = 'order/setCallBackorderRequestEDepot';
 $route['order-idepot']['POST']                           = 'order/setCallBackorderRequestIDepot';
+$route['eport-container']['POST']                           = 'order/setCallBackEPortGR';
+$route['eport-reqcontainer']['POST']                           = 'order/setCallBackEPortreqContainer';
+$route['eport-bookingnow']['POST']                           = 'order/setCallBackEPortBookingNow';
+$route['create-payment']['POST']                           = 'order/getCallBackdoPayment';
 
 $route['all-order']['GET']                              = 'order/allOrder';
 $route['detail-order']['GET']                           = 'order/detailOrder';

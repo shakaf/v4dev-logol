@@ -88,5 +88,6 @@ defined('CHECK_POINT')         OR define('CHECK_POINT', 'http://34.87.19.200:400
 defined('CHECK_POINT_OM')         OR define('CHECK_POINT_OM', 'http://34.87.19.200:4001/api/v4/'); // API services logol
 defined('CHECK_POINT_MASTER')  OR define('CHECK_POINT_MASTER', 'http://34.87.19.200:4002/api/v4/'); // API services logol
 defined('CHECK_POINT_DEPOT')   OR define('CHECK_POINT_DEPOT', 'http://34.87.19.200:4003/api/v4/'); // API services logol
+defined('CHECK_POINT_GATEPASS')   OR define('CHECK_POINT_GATEPASS', 'http://34.87.19.200:4004/api/v4/'); // API services logol
 defined('CHECK_POINT_BILLING')   OR define('CHECK_POINT_BILLING', 'http://34.87.19.200:4006/api/v4/'); // API services logol
 defined('REFRESH_TOKEN')       OR define('REFRESH_TOKEN', 'https://securetoken.googleapis.com/v1/token?key=AIzaSyAqI_zuXXFmccgzjo4RKq3VC_O52GdfHp0'); // API services logol

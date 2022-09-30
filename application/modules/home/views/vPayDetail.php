@@ -328,7 +328,7 @@
 					</div>
 					<div class="mt-3">
 						<!-- <button class="btn btn-primary" style="background-color: #497DF5; width: 100%;"> -->
-						<button type="button" class="btn btn-outline-primary waves-effect waves-light" style="width: 100%;">Back to Order List</button>
+						<a href="<?= site_url('my-order')  ?>" type="button" class="btn btn-outline-primary waves-effect waves-light" style="width: 100%;">Back to Order List</a>
 						</button>
 					</div>
 				</div>

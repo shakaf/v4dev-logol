@@ -78,6 +78,8 @@ var initOnbehalf = function () {
                     dtindex = id;
                     $("#selnpwp").html("");
                     $("#selnpwp").append('<option value="' + datajson[dtindex].ONBEHALF_ID + '" selected>' + datajson[dtindex].ONBEHALF_NPWP + ' - ' + datajson[dtindex].ONBEHALF_NAME + '</option>');
+                    $("#npwpcust").val(datajson[dtindex].ONBEHALF_NPWP);
+                    $("#namecust").val(datajson[dtindex].ONBEHALF_NAME);
                 });
                 $(document).on("click", ".editOnbehalf", function () {
                     var id = $(this).data('index');
@@ -188,6 +190,7 @@ var actOnbehalf = function (wrapper, act) {
                         var numberCustomer = $(".enumberCustomer").val();
                         $("#selnpwp").html("");
                         $("#selnpwp").append('<option value="' + selnpwp + '" selected>' + numberCustomer + ' - ' + namaCustomer + '</option>');
+
                     }
                     var emodal = bootstrap.Modal.getOrCreateInstance(editModal)
                     emodal.hide();
